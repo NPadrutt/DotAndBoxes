@@ -30,7 +30,7 @@ public class BoxPicture extends Canvas {
      */
     @Override
     public void paint(Graphics g) {
-        g.fillRect(DIMENSION/4, DIMENSION/4, DIMENSION/2, DIMENSION/2);
         g.setColor(color);
+        g.fillRect(DIMENSION/4, DIMENSION/4, DIMENSION/2, DIMENSION/2);
     }
 }

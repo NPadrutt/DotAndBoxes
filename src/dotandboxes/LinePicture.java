@@ -44,7 +44,8 @@ public class LinePicture extends Canvas {
      */
     @Override
     public void paint(Graphics g) {
-        g.fillRect(0, 0, x, y);
         g.setColor(color);
+        g.fillRect(0, 0, x, y);
+        
     }
 }

@@ -32,8 +32,8 @@ public class DotPicture extends Canvas {
      */
     @Override
     public void paint(Graphics g) {
-        g.fillOval(0, 0, DIMENSION, DIMENSION);
         g.setColor(color);
+        g.fillOval(0, 0, DIMENSION, DIMENSION);
     }
     
     
