@@ -34,6 +34,7 @@ public class Gameboard extends JPanel{
      * @param columns 
      */
     public Gameboard(int rows, int columns) {
+        super();
         this.rows = rows;
         this.columns = columns;
         this.setBackground(Color.WHITE);
@@ -56,26 +57,34 @@ public class Gameboard extends JPanel{
                 gridBag.gridy = y;
                 gridBag.gridx = x;
                 if ((y%2 == 0) && (x%2 == 0)) {
+                    gridBag.fill = GridBagConstraints.CENTER;
                     this.add(new DotPicture(), gridBag);
                 }
                 else if ((y%2 == 0) && (x%2 != 0)) {
+                    gridBag.fill = GridBagConstraints.HORIZONTAL;
                     this.add(new LinePicture(LinePicture.HORIZONTAL), gridBag);
                 }
                 else if ((y%2 != 0) && (x%2 == 0)) {
+                    gridBag.fill = GridBagConstraints.VERTICAL;
                     this.add(new LinePicture(LinePicture.VERTICAL), gridBag);
                 }
                 else {
+                    gridBag.fill = GridBagConstraints.BOTH;
                     this.add(new BoxPicture(), gridBag);
                 }
             }
         }
     }
+    
+    
+    
 
+    
     
     public static void main(String[] args) {
         JFrame frame = new JFrame("Test");
         Gameboard game = new Gameboard(10,10);
-        frame.add(game);
+        frame.setContentPane(game);
         frame.setSize(600, 400);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

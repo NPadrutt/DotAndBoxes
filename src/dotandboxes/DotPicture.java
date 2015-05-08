@@ -5,24 +5,28 @@
  */
 package dotandboxes;
 
-import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JPanel;
 
 
 /**
  * The DotPicture is a canvas with the picture of a dot.
  * @author Caro
  */
-public class DotPicture extends Canvas {
+public class DotPicture extends JPanel {
     
-    private static final int DIMENSION = 5;
+    private static final int DIMENSION = 7;
     private static final Color color = Color.BLACK;
     
     
     public DotPicture() {
         super();
-        super.setSize(DIMENSION, DIMENSION);
+        super.setPreferredSize(new Dimension(DIMENSION, DIMENSION));
+        super.setMinimumSize(new Dimension(DIMENSION/2, DIMENSION/2));
+        super.setMaximumSize(new Dimension(DIMENSION*2, DIMENSION*2));
     }
     
     
@@ -31,9 +35,10 @@ public class DotPicture extends Canvas {
      * @param g 
      */
     @Override
-    public void paint(Graphics g) {
+    public void paintComponent(Graphics g) {
+        g = (Graphics2D) g;
         g.setColor(color);
-        g.fillOval(0, 0, DIMENSION, DIMENSION);
+        g.fillOval(0, 0, super.getWidth(), super.getHeight());
     }
     
     
