@@ -1,9 +1,5 @@
 package dotandboxes;
 
-/**
- *
- * @author Nino
- */
 public class Box {
     
     private Line leftLine;
@@ -45,5 +41,17 @@ public class Box {
     
     public Line getBottomLine(){
         return bottomLine;
+    }
+    
+    public Boolean isBoxFull(){
+        return leftLine.getIsMarked() 
+                && upperLine.getIsMarked()
+                && rightLine.getIsMarked() 
+                && bottomLine.getIsMarked();
+    }
+    
+    @Override
+    public String toString(){
+        return "";
     }
 }
