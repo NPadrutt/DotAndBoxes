@@ -5,14 +5,18 @@
  */
 package dotandboxes;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.RowConstraints;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- *
+ * Gameboard is the graphical interface of the game Dots and Boxes. It creats a
+ * field with the specified number of rows and columns and displays all the
+ * visual Parts of the programm.
  * @author Caro
  */
 public class Gameboard extends JPanel{
@@ -21,6 +25,7 @@ public class Gameboard extends JPanel{
     private int rows;
     private int columns;
     private GridBagLayout grid;
+    GridBagConstraints gridBag;
     
     
     /**
@@ -31,8 +36,11 @@ public class Gameboard extends JPanel{
     public Gameboard(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        createGrid(rows, columns);
+        this.setBackground(Color.WHITE);
+        grid = new GridBagLayout();
         this.setLayout(grid);
+        gridBag = new GridBagConstraints();
+        createGrid();
         this.setVisible(true);
     }
     
@@ -42,17 +50,18 @@ public class Gameboard extends JPanel{
      * @param rows
      * @param columns 
      */
-    private void createGrid(int rows, int columns) {
-        grid = new GridBagLayout();
-        GridBagConstraints gridBag = new GridBagConstraints();
-        for (int i = 0; i <= (2*columns); i++) {
-            for (int j = 0; j <= (2*rows); j++) {
-                gridBag.gridy = i;
-                gridBag.gridx = j;
-                if ((i%2 == 0) && (j%2 == 0)) {
+    private void createGrid() {
+        for (int y = 0; y <= (2*columns); y++) {
+            for (int x = 0; x <= (2*rows); x++) {
+                gridBag.gridy = y;
+                gridBag.gridx = x;
+                if ((y%2 == 0) && (x%2 == 0)) {
                     this.add(new DotPicture(), gridBag);
                 }
-                else if ((i%2 == 0) && (j%2 != 0)) {
+                else if ((y%2 == 0) && (x%2 != 0)) {
+                    this.add(new LinePicture(LinePicture.HORIZONTAL), gridBag);
+                }
+                else if ((y%2 != 0) && (x%2 == 0)) {
                     this.add(new LinePicture(LinePicture.VERTICAL), gridBag);
                 }
                 else {
@@ -61,5 +70,14 @@ public class Gameboard extends JPanel{
             }
         }
     }
+
     
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Test");
+        Gameboard game = new Gameboard(10,10);
+        frame.add(game);
+        frame.setSize(600, 400);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 }

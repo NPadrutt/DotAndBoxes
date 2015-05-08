@@ -11,7 +11,7 @@ import java.awt.Graphics;
 
 
 /**
- *
+ * The DotPicture is a canvas with the picture of a dot.
  * @author Caro
  */
 public class DotPicture extends Canvas {
@@ -19,12 +19,20 @@ public class DotPicture extends Canvas {
     private static final int DIMENSION = 5;
     private static final Color color = Color.BLACK;
     
+    
     public DotPicture() {
-
+        super();
+        super.setSize(DIMENSION, DIMENSION);
     }
     
-    private void draw(Graphics g) {
-        g.fillOval(DIMENSION/2, DIMENSION/2, DIMENSION, DIMENSION);
+    
+    /**
+     * Draw a circle of the size DIMENSION and the Color black.
+     * @param g 
+     */
+    @Override
+    public void paint(Graphics g) {
+        g.fillOval(0, 0, DIMENSION, DIMENSION);
         g.setColor(color);
     }
     
