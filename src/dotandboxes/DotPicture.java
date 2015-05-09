@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  */
 public class DotPicture extends JPanel {
     
-    private static final int DIMENSION = 7;
+    private static final int DIMENSION = 10;
     private static final Color color = Color.BLACK;
     
     

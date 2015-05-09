@@ -25,7 +25,7 @@ public class LinePicture extends JPanel {
     private static final Color colorBlank = Color.YELLOW;
     private static final Color colorHighlight = Color.RED;
     private static final Color colorPainted = Color.BLACK;
-    private static final int HEIGHT = 5;
+    private static final int HEIGHT = 10;
     private static final int WIDTH = 50;
     private Color color;
     private int x;
@@ -67,7 +67,7 @@ public class LinePicture extends JPanel {
      * Change the color of the line to black.
      */
     private void linePainted() {
-        color = Color.BLACK;
+        color = colorPainted;
         repaint();
     }
     
@@ -78,8 +78,8 @@ public class LinePicture extends JPanel {
     private void lineHighlight() {
         if(color == colorBlank) {
             color = colorHighlight;
-        repaint();
         }
+        repaint();
     }
     
     
@@ -89,8 +89,8 @@ public class LinePicture extends JPanel {
     private void lineNormal() {
         if(color == colorHighlight) {
             color = colorBlank;
-        repaint();
         }
+        repaint();
     }
 
     
@@ -100,8 +100,15 @@ public class LinePicture extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         g = (Graphics2D) g;
-        g.setColor(color);
+        g.setColor(Color.WHITE);
         g.fillRect(0, 0, super.getWidth(), super.getHeight());
+        g.setColor(color);
+        if (super.getWidth() < super.getHeight()) {
+            g.fillRect(super.getWidth()/4, 0, super.getWidth()/2, super.getHeight());
+        }
+        else {
+            g.fillRect(0, super.getHeight()/4, super.getWidth(), super.getHeight()/2);
+        }
         
     }
 }
