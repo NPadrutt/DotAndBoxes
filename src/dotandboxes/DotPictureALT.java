@@ -16,17 +16,17 @@ import javax.swing.JPanel;
  * The DotPicture is a canvas with the picture of a dot.
  * @author Caro
  */
-public class DotPicture extends JPanel {
+public class DotPictureALT extends JPanel {
     
     private static final int DIMENSION = 10;
     private static final Color color = Color.BLACK;
     
     
-    public DotPicture() {
+    public DotPictureALT() {
         super();
-        this.setPreferredSize(new Dimension(DIMENSION, DIMENSION));
-        this.setMinimumSize(new Dimension(DIMENSION/2, DIMENSION/2));
-        this.setMaximumSize(new Dimension(DIMENSION*2, DIMENSION*2));
+        super.setPreferredSize(new Dimension(DIMENSION, DIMENSION));
+        super.setMinimumSize(new Dimension(DIMENSION/2, DIMENSION/2));
+        super.setMaximumSize(new Dimension(DIMENSION*2, DIMENSION*2));
     }
     
     
@@ -38,7 +38,7 @@ public class DotPicture extends JPanel {
     public void paintComponent(Graphics g) {
         g = (Graphics2D) g;
         g.setColor(color);
-        g.fillOval(0, 0, this.getWidth(), this.getHeight());
+        g.fillOval(0, 0, super.getWidth(), super.getHeight());
     }
     
     

@@ -17,15 +17,33 @@ import javax.swing.JPanel;
  */
 public class BoxPicture extends JPanel {
     
+    private static final Color colorBlank = Color.YELLOW;
+    private static final Color colorPainted = Color.RED;
     private static final int DIMENSION = 50;
-    private Color color = Color.RED;
+    private Color color;
+    private Box box;
     
     
-    public BoxPicture() {
+    public BoxPicture(Box box) {
     super();
-    super.setPreferredSize(new Dimension(DIMENSION, DIMENSION));
-    super.setMinimumSize(new Dimension(DIMENSION/2, DIMENSION/2));
-    super.setMaximumSize(new Dimension(DIMENSION*2, DIMENSION*2));
+    this.box = box;
+    setColor();
+    this.setPreferredSize(new Dimension(DIMENSION, DIMENSION));
+    this.setMinimumSize(new Dimension(DIMENSION/2, DIMENSION/2));
+    this.setMaximumSize(new Dimension(DIMENSION*2, DIMENSION*2));
+    }
+    
+    
+    /**
+     * Ask the Box wether it is marked or not. Set the color accordingly.
+     */
+    private void setColor() {
+        if(box.isBoxFull()) {
+            color = colorPainted;
+        }
+        else {
+            color = colorBlank;
+        }
     }
     
     
@@ -36,6 +54,6 @@ public class BoxPicture extends JPanel {
     public void paintComponent(Graphics g) {
         g = (Graphics2D) g;
         g.setColor(color);
-        g.fillRect(super.getWidth()/4, super.getHeight()/4, super.getWidth()/2, super.getHeight()/2);
+        g.fillRect(this.getWidth()/4, this.getHeight()/4, this.getWidth()/2, this.getHeight()/2);
     }
 }

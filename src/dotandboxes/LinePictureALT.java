@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  * horizontal or vertical.
  * @author Caro
  */
-public class LinePicture extends JPanel {
+public class LinePictureALT extends JPanel {
     
     public static final String VERTICAL = "vertical";
     public static final String HORIZONTAL = "horizontal";
@@ -30,12 +30,10 @@ public class LinePicture extends JPanel {
     private Color color;
     private int x;
     private int y;
-    private Line line;
    
     
-    public LinePicture (Line line, String direction) {
+    public LinePictureALT (String direction) {
         super();
-        this.line = line;
         if (direction.equals(VERTICAL)) {
             x = HEIGHT;
             y = WIDTH;
@@ -44,16 +42,14 @@ public class LinePicture extends JPanel {
             x = WIDTH;
             y = HEIGHT;
         }
-        setColor();
-        
-        this.setPreferredSize(new Dimension(x, y));
-        this.setMinimumSize(new Dimension(x/2, y/2));
-        this.setMaximumSize(new Dimension(x*2, y*2));
-        
+        color = colorBlank;
+        super.setPreferredSize(new Dimension(x, y));
+        super.setMinimumSize(new Dimension(x/2, y/2));
+        super.setMaximumSize(new Dimension(x*2, y*2));
         this.addMouseListener(new MouseAdapter() {  //MouseListener für jede Linie
             @Override
             public void mouseClicked(MouseEvent e) {
-                linePaint();
+                linePainted();
             }
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -68,24 +64,10 @@ public class LinePicture extends JPanel {
     
     
     /**
-     * Ask the Line wether it is marked or not. Set the color accordingly.
-     */
-    private void setColor() {
-        if(line.getIsMarked()) {
-            color = colorPainted;
-        }
-        else {
-            color = colorBlank;
-        }
-    }
-    
-    
-    /**
      * Change the color of the line to black.
      */
-    private void linePaint() {
-        line.setIsMarked(true);
-        setColor();
+    private void linePainted() {
+        color = colorPainted;
         repaint();
     }
     
@@ -105,7 +87,9 @@ public class LinePicture extends JPanel {
      * Reverse highlighting the line.
      */
     private void lineNormal() {
-        setColor();
+        if(color == colorHighlight) {
+            color = colorBlank;
+        }
         repaint();
     }
 
@@ -117,13 +101,13 @@ public class LinePicture extends JPanel {
     public void paintComponent(Graphics g) {
         g = (Graphics2D) g;
         g.setColor(Color.WHITE);
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        g.fillRect(0, 0, super.getWidth(), super.getHeight());
         g.setColor(color);
-        if (this.getWidth() < this.getHeight()) {
-            g.fillRect(this.getWidth()/4, 0, this.getWidth()/2, this.getHeight());
+        if (super.getWidth() < super.getHeight()) {
+            g.fillRect(super.getWidth()/4, 0, super.getWidth()/2, super.getHeight());
         }
         else {
-            g.fillRect(0, this.getHeight()/4, this.getWidth(), this.getHeight()/2);
+            g.fillRect(0, super.getHeight()/4, super.getWidth(), super.getHeight()/2);
         }
         
     }

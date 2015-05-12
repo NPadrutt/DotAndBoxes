@@ -5,11 +5,13 @@
  */
 package dotandboxes;
 
+
 /**
  *
  * @author Nino
  */
 public class DotAndBoxes {
+    
 
     /**
      * @param args the command line arguments
