@@ -47,7 +47,7 @@ public class Gameboard extends JPanel{
      * @param rows
      * @param columns 
      */
-    private void createGrid(List list) {
+    private void createGrid(List<List<Box>> list) {
         
         // Setze ersten Dot
         gridBag.gridx = 0;
@@ -55,7 +55,7 @@ public class Gameboard extends JPanel{
         this.add(new DotPicture(), gridBag);
         
         // Setze erste Spalte mit Lines
-        for (int y = 0; y <= list.get(0).size; y++) {
+        for (int y = 0; y <= list.get(0).size(); y++) {
             gridBag.gridy = 2*y+1;
             this.add(new LinePicture(list.get(0).get(y).getLeftLine(), LinePicture.VERTICAL), gridBag);
             gridBag.gridy += 1;
