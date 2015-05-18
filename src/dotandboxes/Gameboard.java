@@ -8,6 +8,7 @@ package dotandboxes;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,8 +21,6 @@ import javax.swing.JPanel;
  */
 public class Gameboard extends JPanel{
 
-    
-
     private GridBagLayout grid;
     GridBagConstraints gridBag;
     
@@ -31,7 +30,7 @@ public class Gameboard extends JPanel{
      * @param rows
      * @param columns 
      */
-    public Gameboard(List<List> list) {
+    public Gameboard(List<List<Box>> list) {
         super();
         this.setBackground(Color.WHITE);
         grid = new GridBagLayout();
@@ -95,8 +94,15 @@ public class Gameboard extends JPanel{
     
     
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Test");
-        Gameboard game = new Gameboard(10,10);
+        JFrame frame = new JFrame("Test");  
+        ArrayList<List<Box>> list = new ArrayList<List<Box>>();
+        
+        ArrayList<Box> boxes = new ArrayList();
+        boxes.add(new Box());
+        list.add(boxes);
+        
+        Gameboard game = new Gameboard(list);
+        //Gameboard game = new Gameboard(10,10);
         frame.add(game);
         frame.setSize(600, 400);
         frame.setVisible(true);

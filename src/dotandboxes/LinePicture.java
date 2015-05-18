@@ -65,8 +65,7 @@ public class LinePicture extends JPanel {
             }
         });
     }
-    
-    
+        
     /**
      * Ask the Line wether it is marked or not. Set the color accordingly.
      */
@@ -77,8 +76,7 @@ public class LinePicture extends JPanel {
         else {
             color = colorBlank;
         }
-    }
-    
+    }    
     
     /**
      * Change the color of the line to black.
