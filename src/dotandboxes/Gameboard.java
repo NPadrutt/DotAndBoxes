@@ -95,10 +95,10 @@ public class Gameboard extends JPanel{
     
     public static void main(String[] args) {
         JFrame frame = new JFrame("Test");  
-        ArrayList<List<Box>> list = new ArrayList<List<Box>>();
-        
+        ArrayList<List<Box>> list = new ArrayList<>();
         ArrayList<Box> boxes = new ArrayList();
-        boxes.add(new Box());
+        Box box = new Box();
+        boxes.add(box);
         list.add(boxes);
         
         Gameboard game = new Gameboard(list);
