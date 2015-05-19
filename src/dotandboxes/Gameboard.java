@@ -8,6 +8,8 @@ package dotandboxes;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -19,7 +21,7 @@ import javax.swing.JPanel;
  * visual Parts of the programm.
  * @author Caro
  */
-public class Gameboard extends JPanel{
+public class Gameboard extends JPanel implements PictureListener {
 
     private GridBagLayout grid;
     GridBagConstraints gridBag;
@@ -37,6 +39,7 @@ public class Gameboard extends JPanel{
         this.setLayout(grid);
         gridBag = new GridBagConstraints();
         createGrid(list);
+        LinePicture.addListener(this);
         this.setVisible(true);
     }
     
@@ -54,7 +57,7 @@ public class Gameboard extends JPanel{
         this.add(new DotPicture(), gridBag);
         
         // Setze erste Spalte mit Lines
-        for (int y = 0; y <= list.get(0).size(); y++) {
+        for (int y = 0; y <= list.get(0).size()-1; y++) {
             gridBag.gridy = 2*y+1;
             this.add(new LinePicture(list.get(0).get(y).getLeftLine(), LinePicture.VERTICAL), gridBag);
             gridBag.gridy += 1;
@@ -63,7 +66,7 @@ public class Gameboard extends JPanel{
         
         // Setze erste Zeile
         gridBag.gridy = 0;
-        for (int x = 0; x <= list.size(); x++) {
+        for (int x = 0; x <= list.size()-1; x++) {
             gridBag.gridx = 2*x+1;
             this.add(new LinePicture(list.get(x).get(0).getUpperLine(), LinePicture.HORIZONTAL), gridBag);
             gridBag.gridx += 1;
@@ -72,20 +75,27 @@ public class Gameboard extends JPanel{
         
         // Setze Rest
         for (int x = 1; x <= list.size(); x++) {
-            gridBag.gridx = 2*x+1;
-            for (int y = 1; y <= list.get(x).size(); y++) {
-                Box box = list.get(x).get(y);
-                gridBag.gridy = 2*y+1;
+            gridBag.gridx = 2*x-1;
+            for (int y = 1; y <= list.get(x-1).size(); y++) {
+                Box box = list.get(x-1).get(y-1);
+                gridBag.gridy = 2*y-1;
                 this.add(new BoxPicture(box), gridBag);
-                gridBag.gridy += 1;     // Untere Linie
+                gridBag.gridy++;     // Untere Linie
                 this.add(new LinePicture(box.getBottomLine(), LinePicture.HORIZONTAL),gridBag);
-                gridBag.gridx += 1;     // Punkt unten rechts
+                gridBag.gridx++;     // Punkt unten rechts
                 this.add(new DotPicture(), gridBag);
-                gridBag.gridy -= 1;     // Rechte Linie
+                gridBag.gridy--;     // Rechte Linie
                 this.add(new LinePicture(box.getRightLine(), LinePicture.VERTICAL), gridBag);
             }
         }
+    }
         
+    
+    /**
+     * Implements Listener Methods.
+     */
+    public void pictureEvent() {
+        repaint();
     }
     
     
@@ -94,7 +104,7 @@ public class Gameboard extends JPanel{
     
     
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Test");  
+        JFrame frame = new JFrame("Test");
         ArrayList<List<Box>> list = new ArrayList<>();
         ArrayList<Box> boxes = new ArrayList();
         Box box = new Box();

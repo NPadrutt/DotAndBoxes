@@ -11,6 +11,10 @@ public class Line {
 
     private Boolean isMarked;
     
+    public Line() {
+        isMarked = false;
+    }
+    
     public void setIsMarked(Boolean isMarked){
         this.isMarked = isMarked;
     }

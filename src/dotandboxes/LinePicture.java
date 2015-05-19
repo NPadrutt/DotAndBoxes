@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -22,6 +23,7 @@ public class LinePicture extends JPanel {
     
     public static final String VERTICAL = "vertical";
     public static final String HORIZONTAL = "horizontal";
+    public static ArrayList<PictureListener> listeners = new ArrayList<>();
     private static final Color colorBlank = Color.YELLOW;
     private static final Color colorHighlight = Color.RED;
     private static final Color colorPainted = Color.BLACK;
@@ -85,6 +87,7 @@ public class LinePicture extends JPanel {
         line.setIsMarked(true);
         setColor();
         repaint();
+        pictureEvent();
     }
     
     
@@ -105,6 +108,19 @@ public class LinePicture extends JPanel {
     private void lineNormal() {
         setColor();
         repaint();
+    }
+    
+    
+    /**
+     * Implement PictureEvent Methods.
+     */
+    public static void addListener(PictureListener toAdd) {
+        listeners.add(toAdd);
+    }
+
+    public void pictureEvent() {
+        for (PictureListener hl : listeners)
+            hl.pictureEvent();
     }
 
     

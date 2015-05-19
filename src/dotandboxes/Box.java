@@ -7,7 +7,12 @@ public class Box {
     private Line rightLine;
     private Line bottomLine;
     
-    public Box(){ }
+    public Box(){ 
+        leftLine = new Line();
+        upperLine = new Line();
+        rightLine = new Line();
+        bottomLine = new Line();
+    }
     
     public Box(Line line, String Position){
         switch (Position) {

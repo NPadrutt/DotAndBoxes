@@ -53,6 +53,7 @@ public class BoxPicture extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         g = (Graphics2D) g;
+        setColor();
         g.setColor(color);
         g.fillRect(this.getWidth()/4, this.getHeight()/4, this.getWidth()/2, this.getHeight()/2);
     }
