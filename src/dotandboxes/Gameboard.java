@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dotandboxes;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -41,8 +34,7 @@ public class Gameboard extends JPanel implements PictureListener {
         createGrid(list);
         LinePicture.addListener(this);
         this.setVisible(true);
-    }
-    
+    }    
     
     /**
      * Create the GridLayout with the specified number of rows and columns and the size of these.
@@ -88,8 +80,7 @@ public class Gameboard extends JPanel implements PictureListener {
                 this.add(new LinePicture(box.getRightLine(), LinePicture.VERTICAL), gridBag);
             }
         }
-    }
-        
+    }        
     
     /**
      * Implements Listener Methods.
@@ -97,11 +88,6 @@ public class Gameboard extends JPanel implements PictureListener {
     public void pictureEvent() {
         repaint();
     }
-    
-    
-    
-
-    
     
     public static void main(String[] args) {
         JFrame frame = new JFrame("Test");

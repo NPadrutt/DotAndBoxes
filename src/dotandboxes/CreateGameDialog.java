@@ -5,18 +5,136 @@
  */
 package dotandboxes;
 
+import java.awt.Frame;
+
 /**
  *
  * @author Nino
  */
 public class CreateGameDialog extends javax.swing.JDialog {
+    
+    private final javax.swing.JButton buttonCreateGame;
+    private final javax.swing.JLabel labelSpielerName;
+    private final javax.swing.JLabel labelGameboardSize;
+    private final javax.swing.JLabel jLabel3;
+    private final javax.swing.JRadioButton radiobuttonLocal;
+    private final javax.swing.JRadioButton radiobuttonNetwork;
+    private final javax.swing.JSpinner spinnerGameboardSize;
+    private final javax.swing.JTextField textFieldPlayerName;
 
     /**
      * Creates new form CreateGameDialog
      */
-    public CreateGameDialog(java.awt.Frame parent, boolean modal) {
+    public CreateGameDialog(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        labelSpielerName = new javax.swing.JLabel();
+        textFieldPlayerName = new javax.swing.JTextField();
+        buttonCreateGame = new javax.swing.JButton();
+        labelGameboardSize = new javax.swing.JLabel();
+        spinnerGameboardSize = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
+        radiobuttonLocal = new javax.swing.JRadioButton();
+        radiobuttonNetwork = new javax.swing.JRadioButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setResizable(false);
+
+        labelSpielerName.setLabelFor(textFieldPlayerName);
+        labelSpielerName.setText("Spielername");
+
+        textFieldPlayerName.setName("textFieldPlayerName"); // NOI18N
+
+        buttonCreateGame.setText("Los Gehts!");
+        buttonCreateGame.setName("buttonStart"); // NOI18N
+        buttonCreateGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartGame(evt);
+            }
+        });
+
+        labelGameboardSize.setLabelFor(spinnerGameboardSize);
+        labelGameboardSize.setText("Spielfeldgrösse");
+
+        spinnerGameboardSize.setName("spinnerGameboardSize"); // NOI18N
+
+        jLabel3.setLabelFor(radiobuttonLocal);
+        jLabel3.setText("Spielmodus");
+
+        radiobuttonLocal.setText("Lokal");
+        radiobuttonLocal.setActionCommand("radioButtonLocal");
+        radiobuttonLocal.setName("radioButtonLocal"); // NOI18N
+
+        radiobuttonNetwork.setText("Netzwerk");
+        radiobuttonNetwork.setName("radioButtonNetwork"); // NOI18N
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonCreateGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textFieldPlayerName)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelSpielerName)
+                            .addComponent(labelGameboardSize)
+                            .addComponent(spinnerGameboardSize, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(radiobuttonLocal)
+                                .addGap(18, 18, 18)
+                                .addComponent(radiobuttonNetwork)))
+                        .addGap(0, 221, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelSpielerName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textFieldPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelGameboardSize)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spinnerGameboardSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radiobuttonLocal)
+                    .addComponent(radiobuttonNetwork))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonCreateGame)
+                .addContainerGap())
+        );
+
+        textFieldPlayerName.getAccessibleContext().setAccessibleName("textFieldPlayerName");
+
+        pack();
+    }
+    
+    public String getPlayerName(){
+        return textFieldPlayerName.getText();
+    }
+    
+    public int getGameboardSize(){
+        return (int)spinnerGameboardSize.getValue();
+    }
+    
+    
+    public Gamemode getGamemode(){
+        if(radiobuttonLocal.isSelected()){
+            return Gamemode.Local;
+        }
+        return Gamemode.Network;
+    }    
+    
+    public void StartGame(java.awt.event.ActionEvent ev){
+        dispose();
     }
 
     /**
@@ -28,57 +146,23 @@ public class CreateGameDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setLabelFor(jTextField1);
-        jLabel1.setText("Spielername");
-
-        jTextField1.setName("textFieldName"); // NOI18N
-
-        jButton1.setText("Los Gehts!");
-        jButton1.setName("buttonStart"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        setAlwaysOnTop(true);
+        setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField1))
-                .addContainerGap())
+            .addGap(0, 422, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+            .addGap(0, 188, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,8 +207,5 @@ public class CreateGameDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
