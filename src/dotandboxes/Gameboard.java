@@ -90,7 +90,7 @@ public class Gameboard extends JPanel implements PictureListener {
     }
     
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Test");
+        
         ArrayList<List<Box>> list = new ArrayList<>();
         ArrayList<Box> boxes = new ArrayList();
         Box box = new Box();
@@ -102,6 +102,6 @@ public class Gameboard extends JPanel implements PictureListener {
         frame.add(game);
         frame.setSize(600, 400);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
     }
 }
