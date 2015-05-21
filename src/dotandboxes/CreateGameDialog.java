@@ -134,7 +134,7 @@ public class CreateGameDialog extends javax.swing.JDialog {
     }    
     
     public void StartGame(java.awt.event.ActionEvent ev){
-        dispose();
+        setVisible(false);
     }
 
     /**
