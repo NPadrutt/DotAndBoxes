@@ -55,11 +55,15 @@ public class LinePicture extends JPanel {
         this.addMouseListener(new MouseAdapter() {  //MouseListener für jede Linie
             @Override
             public void mouseClicked(MouseEvent e) {
-                linePaint();
+                if (Game.isPlayersTurn()) {
+                    linePaint();
+                }
             }
             @Override
             public void mouseEntered(MouseEvent e) {
-                lineHighlight();
+                if (Game.isPlayersTurn()) {
+                    lineHighlight();
+                }
             }
             @Override
             public void mouseExited(MouseEvent e) {
