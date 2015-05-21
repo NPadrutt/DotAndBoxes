@@ -88,20 +88,4 @@ public class Gameboard extends JPanel implements PictureListener {
     public void pictureEvent() {
         repaint();
     }
-    
-    public static void main(String[] args) {
-        
-        ArrayList<List<Box>> list = new ArrayList<>();
-        ArrayList<Box> boxes = new ArrayList();
-        Box box = new Box();
-        boxes.add(box);
-        list.add(boxes);
-        
-        Gameboard game = new Gameboard(list);
-        //Gameboard game = new Gameboard(10,10);
-        frame.add(game);
-        frame.setSize(600, 400);
-        frame.setVisible(true);
-        
-    }
 }
