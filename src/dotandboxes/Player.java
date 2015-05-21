@@ -12,6 +12,10 @@ public class Player {
         score = 0;
     }
     
+    public Player(int score) {
+        this.score = score;
+    }
+    
     public void setName(String name) {
         this.name = name;
     }

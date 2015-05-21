@@ -5,10 +5,92 @@
  */
 package dotandboxes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Caro
  */
 public class Game {
     
+    public static final String SERVER = "server";
+    public static final String COMPUTER = "computer";
+    private List<List<Box>> list;
+    private Player player1;
+    private Player player2;
+    private Gameboard board;
+    
+    
+    /**
+     * Erstellt ein neues Spiel der Grösse x mal y. Modus definiert ob gegen den
+     * Computer oder ein Mensch im Netzwerk gespielt wird.
+     * @param x
+     * @param y
+     * @param Modus 
+     */
+    public Game(int x, int y, String name, String modus) {
+        
+        //Spielfeld erstellen
+        list = new ArrayList<>();
+        ArrayList<Box> boxes = new ArrayList<Box>();
+        //Erste Box
+        Box box = new Box();
+        boxes.add(box);
+        //Erste Spalte
+        for (int row = 1; row <= y; row++) {
+            box = new Box(box.getUpperLine(), Line.POSITION_UPPER);
+            boxes.add(box);
+        }
+        list.add(boxes);
+        
+        //Erste Zeile
+        for (int col = 2; col <= x; col++) {
+            box = new Box(list.get(col-2).get(0).getLeftLine(), Line.POSITION_LEFT);
+            boxes = new ArrayList<>();
+            boxes.add(box);
+            list.add(boxes);
+        }
+        
+        //Rest
+        for (int col = 2; col <= x; col++) {
+            for (int row = 2; row <= y; row++) {
+                Line left = list.get(col-2).get(row-1).getLeftLine();
+                Line up = list.get(col-1).get(row-2).getUpperLine();
+                box = new Box(up, left);
+                list.get(col-1).add(box);
+            }
+        }
+        
+        //Create Players
+        player1 = new Player();
+        player1.setName(name);
+        
+        if (modus.equals(COMPUTER))  {
+            
+        }
+        else if (modus.equals(SERVER)) {
+            
+        }
+        startGame();
+    }
+    
+    
+    
+    /**
+     * Lädt ein Spiel von Textfile.
+     * @param filename
+     */
+    public Game (String filename) {
+        startGame();
+    }
+    
+    
+    /**
+     * Startet das Spiel
+     */
+    private void startGame() {
+        board = new Gameboard(list);
+        
+    }
 }
