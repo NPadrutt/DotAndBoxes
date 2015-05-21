@@ -59,4 +59,31 @@ public class Box {
     public String toString(){
         return "";
     }
+    
+    public boolean isNearlyFull() {
+        if((leftLine.getIsMarked()?1:0)+(upperLine.getIsMarked()?1:0)+(rightLine.getIsMarked()?1:0)+(bottomLine.getIsMarked()?1:0) == 3) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    public Line getLastLine() {
+        if(!leftLine.getIsMarked()) {
+            return leftLine;
+        }
+        else if(!upperLine.getIsMarked()) {
+            return upperLine;
+        }
+        else if(!rightLine.getIsMarked()) {
+            return rightLine;
+        }
+        else if(!bottomLine.getIsMarked()) {
+            return bottomLine;
+        }
+        else {
+            return null;
+        }
+    }
 }
