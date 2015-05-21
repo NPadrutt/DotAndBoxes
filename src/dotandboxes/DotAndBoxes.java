@@ -23,93 +23,72 @@ import javax.swing.WindowConstants;
  * @author lmal
  */
 public class DotAndBoxes extends javax.swing.JFrame implements ActionListener {
-    
-    
-    public DotAndBoxes(){
-        
-    
-        
+    private void GUI() {
+            JFrame frame;
+            frame = new JFrame();
+            frame.setTitle("Dots and Boxes");
+            frame.setSize(600, 400);
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            BorderLayout thisLayout = new BorderLayout();
+            frame.getContentPane().setLayout(thisLayout);
+            Game game = new Game();
+
+            Gameboard game = new Gameboard();
+
+
+            frame.add()
+
+
+
+
+                    JMenuBar menuBar = new JMenuBar();
+                    frame.setJMenuBar(menuBar);
+
+
+                    JMenu gameMenu = new JMenu("Game");
+                    menuBar.add(gameMenu);
+
+
+                    JMenuItem newGameMenuItem = new JMenuItem("New Game");
+                    gameMenu.add(newGameMenuItem);
+
+                    // Exit
+                    JMenuItem exitMenuItem = new JMenuItem("Exit");
+                    exitMenuItem.addActionListener((ActionListener) frame);
+                    gameMenu.add(exitMenuItem);
+
+                    // Help
+                    JMenu helpMenu = new JMenu("Help");
+                    menuBar.add(helpMenu);
+
+
+            // status bar
+                    JPanel statusBarPanel = new JPanel();
+                    GridBagLayout statsuBarLayout = new GridBagLayout();
+                    statsuBarLayout.columnWeights = new double[] { 0.05, 0.45, 0.45,0.05 };
+                    statsuBarLayout.columnWidths = new int[] { 7, 7, 7, 7 };
+                    statusBarPanel.setLayout(statsuBarLayout);
+                    this.getContentPane().add(statusBarPanel, BorderLayout.SOUTH);
+                    statusBarPanel.setVisible(true);
+                    statusBarPanel.setFocusable(false);
+
+
     }
-    
-    
-    	private void GUI() {
-                JFrame frame;
-                frame = new JFrame();
-		frame.setTitle("Dots and Boxes");
-		frame.setSize(600, 400);
-                frame.setVisible(true);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		BorderLayout thisLayout = new BorderLayout();
-		frame.getContentPane().setLayout(thisLayout);
-                Game game = new Game();
-                
-                Gameboard game = new Gameboard();
-                
-                
-                frame.add()
-                
-                        
-                
-		
-			JMenuBar menuBar = new JMenuBar();
-			frame.setJMenuBar(menuBar);
 
-			
-			JMenu gameMenu = new JMenu("Game");
-			menuBar.add(gameMenu);
+    @Override
+    public void actionPerformed(ActionEvent e) {
+            // System.out.println("actionPerformed: " + e.getActionCommand());
 
+            if (e.getActionCommand().equals("Exit")) {
 
-			JMenuItem newGameMenuItem = new JMenuItem("New Game");
-			gameMenu.add(newGameMenuItem);
+                    this.dispose();
 
-			// Exit
-			JMenuItem exitMenuItem = new JMenuItem("Exit");
-			exitMenuItem.addActionListener((ActionListener) frame);
-			gameMenu.add(exitMenuItem);
+            }
+    }        
 
-			// Help
-			JMenu helpMenu = new JMenu("Help");
-			menuBar.add(helpMenu);
-		
-
-		// status bar
-			JPanel statusBarPanel = new JPanel();
-			GridBagLayout statsuBarLayout = new GridBagLayout();
-			statsuBarLayout.columnWeights = new double[] { 0.05, 0.45, 0.45,0.05 };
-			statsuBarLayout.columnWidths = new int[] { 7, 7, 7, 7 };
-			statusBarPanel.setLayout(statsuBarLayout);
-			this.getContentPane().add(statusBarPanel, BorderLayout.SOUTH);
-			statusBarPanel.setVisible(true);
-			statusBarPanel.setFocusable(false);
-
-		
-	}
-        
-            @Override
-	public void actionPerformed(ActionEvent e) {
-		// System.out.println("actionPerformed: " + e.getActionCommand());
-
-		if (e.getActionCommand().equals("Exit")) {
-
-			this.dispose();
-                 
-		}
-	}
-        
-
-         public static void main(String[] args){
-            
+     public static void main(String[] args){            
         DotAndBoxes game = new DotAndBoxes();
-        
-        game.GUI();
-             
-         }
-        
-	/**
-	 * Handles menu events. Implements ActionListener.actionPerformed().
-	 * 
-	 * @param e object with information about the event
-	 */
-
-
+        game.GUI();             
+     }
 }
