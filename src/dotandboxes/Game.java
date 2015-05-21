@@ -17,9 +17,9 @@ public class Game {
     public static final String SERVER = "server";
     public static final String COMPUTER = "computer";
     private List<List<Box>> list;
-    private Player player;
-    private Player enemy;
-    private Player currentPlayer;
+    public static  Player player;
+    public static  Player enemy;
+    public static  Player currentPlayer;
 
     
     
@@ -97,7 +97,7 @@ public class Game {
     }
     
     
-    public boolean isPlayersTurn() {
+    public static boolean isPlayersTurn() {
         return (currentPlayer == player);
     }
 }

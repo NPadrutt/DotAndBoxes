@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import dotandboxes.Game;
+import dotandboxes.Gameboard;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -31,7 +33,6 @@ public class Window extends javax.swing.JFrame implements ActionListener {
     
     
     	private void GUI() {
-		
                 JFrame frame;
                 frame = new JFrame();
 		frame.setTitle("Dots and Boxes");
@@ -40,6 +41,14 @@ public class Window extends javax.swing.JFrame implements ActionListener {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		BorderLayout thisLayout = new BorderLayout();
 		frame.getContentPane().setLayout(thisLayout);
+                Game game = new Game();
+                
+                Gameboard game = new Gameboard();
+                
+                
+                frame.add()
+                
+                        
                 
 		
 			JMenuBar menuBar = new JMenuBar();
