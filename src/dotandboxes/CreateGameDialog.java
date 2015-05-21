@@ -50,6 +50,7 @@ public class CreateGameDialog extends javax.swing.JDialog {
         buttonCreateGame.setText("Los Gehts!");
         buttonCreateGame.setName("buttonStart"); // NOI18N
         buttonCreateGame.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StartGame(evt);
             }
@@ -126,15 +127,21 @@ public class CreateGameDialog extends javax.swing.JDialog {
     }
     
     
-    public Gamemode getGamemode(){
+    public String getGamemode(){
         if(radiobuttonLocal.isSelected()){
-            return Gamemode.Local;
+            return Game.COMPUTER;
         }
-        return Gamemode.Network;
+        return Game.SERVER;
     }    
     
+    
+    
     public void StartGame(java.awt.event.ActionEvent ev){
+ 
         setVisible(false);
+        
+        
+           
     }
 
     /**
