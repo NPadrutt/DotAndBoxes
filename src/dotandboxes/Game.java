@@ -17,9 +17,10 @@ public class Game {
     public static final String SERVER = "server";
     public static final String COMPUTER = "computer";
     private List<List<Box>> list;
-    private Player player1;
-    private Player player2;
-    private Gameboard board;
+    private Player player;
+    private Player enemy;
+    private Player currentPlayer;
+
     
     
     /**
@@ -63,16 +64,16 @@ public class Game {
         }
         
         //Create Players
-        player1 = new Player();
-        player1.setName(name);
+        player = new Player();
+        player.setName(name);
         
         if (modus.equals(COMPUTER))  {
-            
+            enemy = new ComputerPlayer();
         }
         else if (modus.equals(SERVER)) {
             
         }
-        startGame();
+        
     }
     
     
@@ -82,15 +83,21 @@ public class Game {
      * @param filename
      */
     public Game (String filename) {
-        startGame();
+        
     }
     
     
-    /**
-     * Startet das Spiel
-     */
-    private void startGame() {
-        board = new Gameboard(list);
-        
+    public List getList() {
+        return list;
+    }
+    
+    
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+    
+    
+    public boolean isPlayersTurn() {
+        return (currentPlayer == player);
     }
 }

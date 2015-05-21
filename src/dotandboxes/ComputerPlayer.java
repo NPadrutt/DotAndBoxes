@@ -12,7 +12,16 @@ package dotandboxes;
 public class ComputerPlayer extends Player {
     
     public ComputerPlayer() {
-        
+        super();
+        super.setName("Computer");
     }
     
+    public ComputerPlayer(int score) {
+        super(score);
+        super.setName("Computer");
+    }
+    
+    public void play() {
+        
+    }
 }
