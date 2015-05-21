@@ -22,10 +22,10 @@ import javax.swing.WindowConstants;
  *
  * @author lmal
  */
-public class Window extends javax.swing.JFrame implements ActionListener {
+public class DotAndBoxes extends javax.swing.JFrame implements ActionListener {
     
     
-    public Window(){
+    public DotAndBoxes(){
         
     
         
@@ -99,7 +99,7 @@ public class Window extends javax.swing.JFrame implements ActionListener {
 
          public static void main(String[] args){
             
-        Window game = new Window();
+        DotAndBoxes game = new DotAndBoxes();
         
         game.GUI();
              
