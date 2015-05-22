@@ -3,11 +3,15 @@ package dotandboxes;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
+import javax.swing.GroupLayout;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.WindowConstants;
@@ -18,7 +22,7 @@ import javax.swing.WindowConstants;
  */
 public class CreateGameDialog extends javax.swing.JDialog {
     
-        private final JButton buttonCreateGame;
+    private final JButton buttonCreateGame;
     private final JLabel labelSpielerName;
     private final JLabel labelGameboardSize;
     private final JLabel labelGameMode;
@@ -42,6 +46,8 @@ public class CreateGameDialog extends javax.swing.JDialog {
         textFieldPlayerName = new JTextField();
         buttonCreateGame = new JButton();
         labelGameboardSize = new JLabel();
+        labelIpEnemy = new JLabel();
+        textFieldIpEnemy = new JTextField();
         
         SpinnerModel model = new SpinnerNumberModel(3,3,30, 1);
         spinnerGameboardSize = new JSpinner(model);
@@ -58,7 +64,8 @@ public class CreateGameDialog extends javax.swing.JDialog {
         buttonCreateGame.setText("Los Gehts!");
         buttonCreateGame.setName("buttonStart");
         buttonCreateGame.addActionListener((ActionEvent evt) -> {
-            StartGame(evt);
+            setVisible(false);      
+            dispose();
         });
 
         labelGameboardSize.setLabelFor(spinnerGameboardSize);
@@ -68,46 +75,56 @@ public class CreateGameDialog extends javax.swing.JDialog {
 
         labelGameMode.setLabelFor(radiobuttonLocal);
         labelGameMode.setText("Spielmodus");
-
         
         radiobuttonLocal.setText("Lokal");
-        radiobuttonNetwork.setText("Netzwerk");
+        radiobuttonNetwork.setText("Netzwerk");        
         
-        labelIpEnemy = new JLabel();
         labelIpEnemy.setText("IP-Adresse des Gegners");
+        labelIpEnemy.setVisible(false);
+        textFieldIpEnemy.setVisible(false);
         
-        textFieldIpEnemy = new JTextField();
+        radiobuttonLocal.addActionListener((ActionEvent evt) -> {
+            labelIpEnemy.setVisible(false);
+            textFieldIpEnemy.setVisible(false);
+        });       
+       
+        radiobuttonNetwork.addActionListener((ActionEvent evt) -> {
+            labelIpEnemy.setVisible(true);
+            textFieldIpEnemy.setVisible(true);
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonCreateGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonCreateGame, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textFieldIpEnemy)
                     .addComponent(textFieldPlayerName)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addComponent(labelSpielerName)
                             .addComponent(labelGameboardSize)
-                            .addComponent(spinnerGameboardSize, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelIpEnemy)
+                            .addComponent(spinnerGameboardSize, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelGameMode)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(radiobuttonLocal)
                                 .addGap(18, 18, 18)
                                 .addComponent(radiobuttonNetwork)))
-                        .addGap(0, 221, Short.MAX_VALUE)))
+                        .addGap(18, 221, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelSpielerName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addComponent(textFieldPlayerName, PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelGameboardSize)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spinnerGameboardSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelGameMode)
@@ -115,13 +132,13 @@ public class CreateGameDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radiobuttonLocal)
                     .addComponent(radiobuttonNetwork))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelIpEnemy)
+                .addComponent(textFieldIpEnemy, PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonCreateGame)
                 .addContainerGap())
         );
-
-        textFieldPlayerName.getAccessibleContext().setAccessibleName("textFieldPlayerName");
-
         pack();
     }
     
@@ -131,18 +148,17 @@ public class CreateGameDialog extends javax.swing.JDialog {
     
     public int getGameboardSize(){
         return (int)spinnerGameboardSize.getValue();
-    }    
+    } 
     
-    public String getGamemode(){
+    public String getIpAdress(){
+        return textFieldIpEnemy.getText();
+    }
+    
+    public Gamemode getGamemode(){
         if(radiobuttonLocal.isSelected()){
-            return Game.COMPUTER;
+            return Gamemode.Local;
         }
-        return Game.SERVER;
-    }    
-    
-    public void StartGame(java.awt.event.ActionEvent ev){
-        setVisible(false);      
-        dispose();
+        return Gamemode.Network;
     }
 
     /**
@@ -156,6 +172,7 @@ public class CreateGameDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
+        setPreferredSize(new java.awt.Dimension(422, 280));
         setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

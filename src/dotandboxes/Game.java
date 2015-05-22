@@ -13,21 +13,12 @@ import java.util.List;
  * @author Caro
  */
 public class Game {
-    
-    public static final String SERVER = "server";
-    public static final String COMPUTER = "computer";
     private List<List<Box>> list;
     public static  Player player;
     public static  Player enemy;
-    public static  Player currentPlayer;    
+    public static  Player currentPlayer;
     
-    /**
-     * Erstellt ein neues Spiel der Grösse x mal y. Modus definiert ob gegen den
-     * Computer oder ein Mensch im Netzwerk gespielt wird.
-     * @param x
-     * @param y 
-     */
-    public Game(int x, int y, String name, String modus) {
+    public Game(int x, int y, String name, Gamemode modus) {
         
         //Spielfeld erstellen
         list = new ArrayList<>();
@@ -66,10 +57,10 @@ public class Game {
         player = new Player();
         player.setName(name);
         
-        if (modus.equals(COMPUTER))  {
+        if (modus.equals(Gamemode.Local))  {
             enemy = new ComputerPlayer(list);
         }
-        else if (modus.equals(SERVER)) {
+        else if (modus.equals(Gamemode.Network)) {
             
         }        
     }
@@ -80,7 +71,7 @@ public class Game {
      */
     public Game (String filename) {
         
-    }    
+    }
     
     public List getList() {
         return list;
@@ -89,6 +80,14 @@ public class Game {
     public Player getCurrentPlayer() {
         return currentPlayer;
     }    
+    
+    public String getPlayername() {
+        return player.getName();
+    }
+    
+    public String getEnemyname(){
+        return enemy.getName();
+    }
     
     public static boolean isPlayersTurn() {
         return (currentPlayer == player);
