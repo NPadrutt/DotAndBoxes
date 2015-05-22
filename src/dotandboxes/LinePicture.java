@@ -5,6 +5,7 @@
  */
 package dotandboxes;
 
+import dotandboxes.Models.Line;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

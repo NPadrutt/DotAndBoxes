@@ -1,4 +1,4 @@
-package dotandboxes;
+package dotandboxes.Models;
 
 /**
  *

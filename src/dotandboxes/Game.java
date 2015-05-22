@@ -5,6 +5,10 @@
  */
 package dotandboxes;
 
+import dotandboxes.Models.Box;
+import dotandboxes.Models.Player;
+import dotandboxes.Models.Line;
+import dotandboxes.Models.ComputerPlayer;
 import java.util.ArrayList;
 import java.util.List;
 

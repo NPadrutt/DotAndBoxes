@@ -1,5 +1,8 @@
 package dotandboxes;
 
+import dotandboxes.Gui.BoxPicture;
+import dotandboxes.Gui.DotPicture;
+import dotandboxes.Models.Box;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

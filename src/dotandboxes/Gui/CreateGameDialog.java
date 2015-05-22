@@ -1,5 +1,6 @@
-package dotandboxes;
+package dotandboxes.Gui;
 
+import dotandboxes.Gamemode;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
@@ -175,7 +176,6 @@ public class CreateGameDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
-        setPreferredSize(new java.awt.Dimension(422, 280));
         setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
