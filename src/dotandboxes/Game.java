@@ -5,6 +5,7 @@
  */
 package dotandboxes;
 
+import dotandboxes.Gui.BoxPicture;
 import dotandboxes.Models.Box;
 import dotandboxes.Models.BoxListener;
 import dotandboxes.Models.Player;
@@ -71,7 +72,8 @@ public class Game implements BoxListener {
         }
         else if (modus.equals(Gamemode.Network)) {
             
-        }        
+        }
+        BoxPicture.addListener(this);
     }
     
     /**
