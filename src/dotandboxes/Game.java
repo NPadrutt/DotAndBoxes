@@ -65,7 +65,7 @@ public class Game {
         player.setName(name);
         
         if (modus.equals(COMPUTER))  {
-            enemy = new ComputerPlayer();
+            enemy = new ComputerPlayer(list);
         }
         else if (modus.equals(SERVER)) {
             
