@@ -81,6 +81,14 @@ public class Game {
         return currentPlayer;
     }    
     
+    public String getPlayername() {
+        return player.getName();
+    }
+    
+    public String getEnemyname(){
+        return enemy.getName();
+    }
+    
     public static boolean isPlayersTurn() {
         return (currentPlayer == player);
     }
