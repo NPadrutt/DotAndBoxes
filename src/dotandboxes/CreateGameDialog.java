@@ -143,8 +143,10 @@ public class CreateGameDialog extends javax.swing.JDialog {
         pack();
     }
     
-    public String getPlayerName(){
-        return textFieldPlayerName.getText();
+    public String getPlayerName(){    
+        return textFieldPlayerName.getText() != null 
+                ? textFieldPlayerName.getText()
+                : "Player";
     }
     
     public int getGameboardSize(){
