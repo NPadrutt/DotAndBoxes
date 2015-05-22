@@ -154,11 +154,11 @@ public class CreateGameDialog extends javax.swing.JDialog {
         return textFieldIpEnemy.getText();
     }
     
-    public String getGamemode(){
+    public Gamemode getGamemode(){
         if(radiobuttonLocal.isSelected()){
-            return Game.COMPUTER;
+            return Gamemode.Local;
         }
-        return Game.SERVER;
+        return Gamemode.Network;
     }
 
     /**

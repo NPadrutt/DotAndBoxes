@@ -20,7 +20,7 @@ public class Player {
         this.name = name;
     }
     
-    public String getrName(){
+    public String getName(){
         return this.name;
     }
     
