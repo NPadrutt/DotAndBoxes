@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @author Caro
  */
-public class ComputerPlayer extends Player {
+public class ComputerPlayer extends Player implements Enemy {
     
     List<List<Box>> list;
     
