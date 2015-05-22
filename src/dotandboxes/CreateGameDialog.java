@@ -2,7 +2,7 @@ package dotandboxes;
 
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -17,14 +17,15 @@ import javax.swing.SpinnerNumberModel;
  */
 public class CreateGameDialog extends javax.swing.JDialog {
     
-    private final javax.swing.JButton buttonCreateGame;
-    private final javax.swing.JLabel labelSpielerName;
-    private final javax.swing.JLabel labelGameboardSize;
-    private final javax.swing.JLabel labelGameMode;
-    private final javax.swing.JRadioButton radiobuttonLocal;
-    private final javax.swing.JRadioButton radiobuttonNetwork;
-    private final javax.swing.JSpinner spinnerGameboardSize;
-    private final javax.swing.JTextField textFieldPlayerName;
+    private final JButton buttonCreateGame;
+    private final JLabel labelSpielerName;
+    private final JLabel labelGameboardSize;
+    private final JLabel labelGameMode;
+    private final JRadioButton radiobuttonLocal;
+    private final JRadioButton radiobuttonNetwork;
+    private final ButtonGroup buttonGroup;
+    private final JSpinner spinnerGameboardSize;
+    private final JTextField textFieldPlayerName;
 
     /**
      * Creates new form CreateGameDialog
@@ -41,9 +42,14 @@ public class CreateGameDialog extends javax.swing.JDialog {
         SpinnerModel model = new SpinnerNumberModel(3,3,30, 1);
         spinnerGameboardSize = new JSpinner(model);
         labelGameMode = new JLabel();
+        
         radiobuttonLocal = new JRadioButton();
         radiobuttonNetwork = new JRadioButton();
-
+        
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(radiobuttonLocal);
+        buttonGroup.add(radiobuttonNetwork);
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setResizable(false);
@@ -67,12 +73,9 @@ public class CreateGameDialog extends javax.swing.JDialog {
         labelGameMode.setLabelFor(radiobuttonLocal);
         labelGameMode.setText("Spielmodus");
 
+        
         radiobuttonLocal.setText("Lokal");
-        radiobuttonLocal.setActionCommand("radioButtonLocal");
-        radiobuttonLocal.setName("radioButtonLocal");
-
         radiobuttonNetwork.setText("Netzwerk");
-        radiobuttonNetwork.setName("radioButtonNetwork");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
