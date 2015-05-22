@@ -5,6 +5,7 @@
  */
 package dotandboxes.Gui;
 
+import dotandboxes.Game;
 import java.awt.Container;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
@@ -54,8 +55,6 @@ public class StatusBar extends JPanel {
         
         
         this.setVisible(true);
-        
-        
     }
     
     private void getWhosTurn() {
