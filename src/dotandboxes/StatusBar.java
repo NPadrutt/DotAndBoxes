@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
  */
 public class StatusBar extends JPanel {
     
-    public StatusBar() {
+    public StatusBar(String namePlayer, String nameEnemy) {
         super();
         GridLayout layout = new GridLayout();
         layout.setColumns(3);
@@ -23,14 +23,14 @@ public class StatusBar extends JPanel {
         
         //Feld links
         JTextArea feldLinks1 = new JTextArea(namePlayer + ": ");
-        JTextArea feldLinks2 = new JTextArea(scorePlayer);
+        //JTextArea feldLinks2 = new JTextArea(scorePlayer);
         
         //Feld mitte
         JTextArea feldMitte1 = new JTextArea(nameEnemy + ": ");
-        JTextArea feldMitte2 = new JTextArea(scoreEnemy);
+        //JTextArea feldMitte2 = new JTextArea(scoreEnemy);
         
         //Feld rechts
-        JTextArea feldRechts = new JTextArea(whosTurn);
+        //JTextArea feldRechts = new JTextArea(whosTurn);
         
         
         this.setVisible(true);

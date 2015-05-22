@@ -56,6 +56,7 @@ public class Game {
         //Create Players
         player = new Player();
         player.setName(name);
+        currentPlayer = player;
         
         if (modus.equals(Gamemode.Local))  {
             enemy = new ComputerPlayer(list);

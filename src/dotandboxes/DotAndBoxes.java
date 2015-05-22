@@ -59,7 +59,7 @@ public class DotAndBoxes extends JFrame {
 
 
         // status bar
-        StatusBar statusBarPanel = new StatusBar();
+        StatusBar statusBarPanel = new StatusBar(game.getPlayername(), game.getEnemyname());
         this.add(statusBarPanel, BorderLayout.SOUTH);
         
         this.pack();
