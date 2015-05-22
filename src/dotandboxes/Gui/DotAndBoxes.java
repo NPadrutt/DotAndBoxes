@@ -1,14 +1,14 @@
 package dotandboxes.Gui;
 
+import dotandboxes.Enemy;
 import dotandboxes.Game;
 import dotandboxes.Gameboard;
+import dotandboxes.Models.EnemyListener;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 
 /**
  *
@@ -67,6 +67,7 @@ public class DotAndBoxes extends JFrame {
         this.setVisible(true);
         
     }
+    
     
      public static void main(String[] args){            
         new DotAndBoxes();        

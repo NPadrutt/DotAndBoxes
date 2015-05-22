@@ -22,12 +22,14 @@ public class ComputerPlayer extends Enemy implements GameListener {
         super();
         super.setName("Computer");
         this.list = list;
+        Game.addListener(this);
     }
     
     public ComputerPlayer(List<List<Box>> list, int score) {
         super(score);
         super.setName("Computer");
         this.list = list;
+        Game.addListener(this);
     }
     
     @Override
@@ -71,7 +73,8 @@ public class ComputerPlayer extends Enemy implements GameListener {
                     marked = !marked;
                 }
             }
-            enemyEvent();
         } while (!marked);
+        enemyEvent();
+        Game.othersTurn();
     }
 }

@@ -104,7 +104,7 @@ public class Game implements PictureListener {
         return currentPlayer;
     }
     
-    private void othersTurn() {
+    public static void othersTurn() {
         if (currentPlayer == player) {
             currentPlayer = enemy;
         }

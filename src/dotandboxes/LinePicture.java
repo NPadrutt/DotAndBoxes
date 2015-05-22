@@ -34,6 +34,7 @@ public class LinePicture extends JPanel {
     private int x;
     private int y;
     private Line line;
+    private Boolean highlight;
    
     
     public LinePicture (Line line, String direction) {
@@ -47,6 +48,7 @@ public class LinePicture extends JPanel {
             x = WIDTH;
             y = HEIGHT;
         }
+        highlight = false;
         setColor();
         
         this.setPreferredSize(new Dimension(x, y));
@@ -80,6 +82,9 @@ public class LinePicture extends JPanel {
         if(line.getIsMarked()) {
             color = colorPainted;
         }
+        else if (highlight) {
+            color = colorHighlight;
+        }
         else {
             color = colorBlank;
         }
@@ -90,7 +95,6 @@ public class LinePicture extends JPanel {
      */
     private void linePaint() {
         line.setIsMarked(true);
-        setColor();
         repaint();
         pictureEvent();
     }
@@ -101,7 +105,7 @@ public class LinePicture extends JPanel {
      */
     private void lineHighlight() {
         if(color == colorBlank) {
-            color = colorHighlight;
+            highlight = true;
         }
         repaint();
     }
@@ -111,7 +115,7 @@ public class LinePicture extends JPanel {
      * Reverse highlighting the line.
      */
     private void lineNormal() {
-        setColor();
+        highlight = false;
         repaint();
     }
     
@@ -137,6 +141,7 @@ public class LinePicture extends JPanel {
         g = (Graphics2D) g;
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        setColor();
         g.setColor(color);
         if (this.getWidth() < this.getHeight()) {
             g.fillRect(this.getWidth()/4, 0, this.getWidth()/2, this.getHeight());
