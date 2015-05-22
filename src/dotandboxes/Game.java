@@ -78,9 +78,6 @@ public class Game {
         return list;
     }    
     
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }    
     
     public String getPlayername() {
         return player.getName();
