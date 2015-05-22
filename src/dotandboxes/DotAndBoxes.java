@@ -1,11 +1,11 @@
+package dotandboxes;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import dotandboxes.CreateGameDialog;
-import dotandboxes.Game;
-import dotandboxes.Gameboard;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
@@ -65,9 +65,7 @@ public class DotAndBoxes extends JFrame {
 
 
         // status bar
-        JPanel statusBarPanel = new JPanel();
-        statusBarPanel.setLayout(new FlowLayout());
-        statusBarPanel.setVisible(true);
+        StatusBar statusBarPanel = new StatusBar();
         this.add(statusBarPanel, BorderLayout.SOUTH);
         
         this.pack();
