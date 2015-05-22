@@ -66,15 +66,16 @@ public class Box {
     }
     
     public Boolean isNewFull() {
-        Boolean state = leftLine.getIsMarked() 
+        if(!marked) {
+            if(leftLine.getIsMarked() 
                         && upperLine.getIsMarked()
                         && rightLine.getIsMarked() 
-                        && bottomLine.getIsMarked() 
-                        && !marked;
-        if(isBoxFull()) {
-            marked = true;
+                        && bottomLine.getIsMarked()) {
+                marked = true;
+            }
+            return marked;
         }
-        return state;
+        return false;
     }
     
     @Override

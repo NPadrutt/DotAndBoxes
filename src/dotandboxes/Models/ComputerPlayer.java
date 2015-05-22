@@ -16,7 +16,8 @@ import java.util.Random;
  */
 public class ComputerPlayer extends Enemy implements GameListener {
     
-    List<List<Box>> list;
+    private static List<List<Box>> list;
+    private static Random random = new Random();
     
     public ComputerPlayer(List<List<Box>> list) {
         super();
@@ -50,7 +51,6 @@ public class ComputerPlayer extends Enemy implements GameListener {
                 }
             }
         }
-        Random random = new Random();
         Boolean marked = false;
         do {
             int x = random.nextInt(list.size());
