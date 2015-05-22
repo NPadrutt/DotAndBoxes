@@ -69,6 +69,10 @@ public class Box {
         }
     }
     
+    /**
+     * Funktioniert nur richtig, wenn isNearlyFull true zurück gibt.
+     * @return 
+     */
     public Line getLastLine() {
         if(!leftLine.getIsMarked()) {
             return leftLine;
