@@ -49,9 +49,8 @@ public class DotAndBoxes extends JFrame {
         gameMenu.add(newGameMenuItem);
 
         // Exit
-        //JMenuItem exitMenuItem = new JMenuItem("Exit");
-        //exitMenuItem.addActionListener((ActionListener) frame);
-        //gameMenu.add(exitMenuItem);
+        JMenuItem exitMenuItem = new JMenuItem("Exit");
+        gameMenu.add(exitMenuItem);
 
         // Help
         JMenu helpMenu = new JMenu("Help");

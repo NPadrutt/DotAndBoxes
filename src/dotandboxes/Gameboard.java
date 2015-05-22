@@ -3,12 +3,12 @@ package dotandboxes;
 import dotandboxes.Gui.BoxPicture;
 import dotandboxes.Gui.DotPicture;
 import dotandboxes.Models.Box;
+import dotandboxes.Models.GameEvent;
+import dotandboxes.Models.GameListener;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  * visual Parts of the programm.
  * @author Caro
  */
-public class Gameboard extends JPanel {
+public class Gameboard extends JPanel implements PictureListener {
 
     private GridBagLayout grid;
     GridBagConstraints gridBag;
@@ -35,6 +35,7 @@ public class Gameboard extends JPanel {
         this.setLayout(grid);
         gridBag = new GridBagConstraints();
         createGrid(list);
+        LinePicture.addListener(this);
         this.setVisible(true);
     }    
     
@@ -88,7 +89,9 @@ public class Gameboard extends JPanel {
     /**
      * Implements Listener Methods.
      */
-
+    public void pictureEvent() {
+        repaint();
+    }
     
     
 }

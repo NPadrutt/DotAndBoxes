@@ -22,9 +22,9 @@ import java.util.List;
 public class Game implements BoxListener {
     private static ArrayList<GameListener> listeners = new ArrayList<>();
     private List<List<Box>> list;
-    public static  Player player;
-    public static  Player enemy;
-    public static  Player currentPlayer;
+    private static Player player;
+    private static Player enemy;
+    private static Player currentPlayer;
     
     public Game(int x, int y, String name, Gamemode modus) {
         
@@ -99,20 +99,29 @@ public class Game implements BoxListener {
         return (currentPlayer == player);
     }
     
-    
-    public static void addListener(GameListener toAdd) {
-        listeners.add(toAdd);
+    public static Player getCurrentPlayer() {
+        return currentPlayer;
     }
     
-    public void boxEvent(Boolean boxFilled) {
-        GameEvent event = new GameEvent(currentPlayer, boxFilled);
-        for (GameListener hl : listeners)
-            hl.gameEvent(event);
+    private void othersTurn() {
         if (currentPlayer == player) {
             currentPlayer = enemy;
         }
         else {
             currentPlayer = player;
-        }
+        } 
+    }
+    
+    
+    public static void addListener(GameListener toAdd) {
+        listeners.add(toAdd);
+    }
+    
+    @Override
+    public void boxEvent(Boolean boxFilled) {
+        GameEvent event = new GameEvent(currentPlayer, boxFilled);
+        othersTurn();
+        for (GameListener hl : listeners)
+            hl.gameEvent(event);
     }
 }

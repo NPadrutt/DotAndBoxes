@@ -90,6 +90,6 @@ public class StatusBar extends JPanel {
     }
     
     private void getWhosTurn() {
-        whosTurn = "It's " + Game.currentPlayer.getName() + "'s Turn";
+        whosTurn = "It's " + Game.getCurrentPlayer().getName() + "'s Turn";
     }
 }
