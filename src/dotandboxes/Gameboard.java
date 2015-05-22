@@ -78,6 +78,7 @@ public class Gameboard extends JPanel implements PictureListener {
                 this.add(new DotPicture(), gridBag);
                 gridBag.gridy--;     // Rechte Linie
                 this.add(new LinePicture(box.getRightLine(), LinePicture.VERTICAL), gridBag);
+                gridBag.gridx--;
             }
         }
     }        
@@ -88,4 +89,5 @@ public class Gameboard extends JPanel implements PictureListener {
     public void pictureEvent() {
         repaint();
     }
+    
 }

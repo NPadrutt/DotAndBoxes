@@ -32,11 +32,13 @@ public class Game {
         //Spielfeld erstellen
         list = new ArrayList<>();
         ArrayList<Box> boxes = new ArrayList<>();
+        
         //Erste Box
         Box box = new Box();
         boxes.add(box);
+        
         //Erste Spalte
-        for (int row = 1; row <= y; row++) {
+        for (int row = 2; row <= y; row++) {
             box = new Box(box.getBottomLine(), Line.POSITION_UPPER);
             boxes.add(box);
         }
