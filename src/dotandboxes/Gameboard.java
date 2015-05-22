@@ -24,8 +24,7 @@ public class Gameboard extends JPanel implements PictureListener, EnemyListener 
     
     /**
      * Create a new Gameboard with the specified number of rows and columns.
-     * @param rows
-     * @param columns 
+     * @param list
      */
     public Gameboard(List<List<Box>> list) {
         super();
@@ -35,6 +34,7 @@ public class Gameboard extends JPanel implements PictureListener, EnemyListener 
         gridBag = new GridBagConstraints();
         createGrid(list);
         LinePicture.addListener(this);
+        Enemy.addListener(this);
         this.setVisible(true);
     }    
     

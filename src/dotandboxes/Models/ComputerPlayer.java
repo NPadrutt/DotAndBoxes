@@ -7,7 +7,6 @@ package dotandboxes.Models;
 
 import dotandboxes.Enemy;
 import dotandboxes.Game;
-import dotandboxes.LinePicture;
 import java.util.List;
 import java.util.Random;
 

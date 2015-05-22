@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public abstract class Enemy extends Player {
     
-    public static ArrayList<EnemyListener> listeners;
+    public static ArrayList<EnemyListener> listeners = new ArrayList<>();
     
     public Enemy() {
         super();
