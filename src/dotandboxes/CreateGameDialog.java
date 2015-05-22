@@ -124,8 +124,7 @@ public class CreateGameDialog extends javax.swing.JDialog {
     
     public int getGameboardSize(){
         return (int)spinnerGameboardSize.getValue();
-    }
-    
+    }    
     
     public String getGamemode(){
         if(radiobuttonLocal.isSelected()){
@@ -134,14 +133,8 @@ public class CreateGameDialog extends javax.swing.JDialog {
         return Game.SERVER;
     }    
     
-    
-    
     public void StartGame(java.awt.event.ActionEvent ev){
- 
-        setVisible(false);
-        
-        
-           
+        setVisible(false);      
     }
 
     /**
