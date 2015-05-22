@@ -19,16 +19,13 @@ public class Game {
     private List<List<Box>> list;
     public static  Player player;
     public static  Player enemy;
-    public static  Player currentPlayer;
-
-    
+    public static  Player currentPlayer;    
     
     /**
      * Erstellt ein neues Spiel der Grösse x mal y. Modus definiert ob gegen den
      * Computer oder ein Mensch im Netzwerk gespielt wird.
      * @param x
-     * @param y
-     * @param Modus 
+     * @param y 
      */
     public Game(int x, int y, String name, String modus) {
         
@@ -72,11 +69,8 @@ public class Game {
         }
         else if (modus.equals(SERVER)) {
             
-        }
-        
+        }        
     }
-    
-    
     
     /**
      * Lädt ein Spiel von Textfile.
@@ -84,18 +78,15 @@ public class Game {
      */
     public Game (String filename) {
         
-    }
-    
+    }    
     
     public List getList() {
         return list;
-    }
-    
+    }    
     
     public Player getCurrentPlayer() {
         return currentPlayer;
-    }
-    
+    }    
     
     public static boolean isPlayersTurn() {
         return (currentPlayer == player);
