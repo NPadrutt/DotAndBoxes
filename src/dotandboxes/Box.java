@@ -18,18 +18,24 @@ public class Box {
         switch (Position) {
             case Line.POSITION_LEFT:
                 leftLine = line;
+                upperLine = new Line();
                 break;
             case Line.POSITION_UPPER:
                 upperLine = line;
+                leftLine = new Line();
                 break;
             default:
                 throw new IllegalArgumentException("Only Left and Upper Lines are supporter.");
         }
+        this.rightLine = new Line();
+        this.bottomLine = new Line();
     }
     
     public Box(Line upperLine, Line leftLine){
         this.upperLine = upperLine;
         this.leftLine = leftLine;
+        this.rightLine = new Line();
+        this.bottomLine = new Line();
     }
     
     public Line getLeftLine(){
