@@ -31,20 +31,20 @@ public class Game {
         
         //Spielfeld erstellen
         list = new ArrayList<>();
-        ArrayList<Box> boxes = new ArrayList<Box>();
+        ArrayList<Box> boxes = new ArrayList<>();
         //Erste Box
         Box box = new Box();
         boxes.add(box);
         //Erste Spalte
         for (int row = 1; row <= y; row++) {
-            box = new Box(box.getUpperLine(), Line.POSITION_UPPER);
+            box = new Box(box.getBottomLine(), Line.POSITION_UPPER);
             boxes.add(box);
         }
         list.add(boxes);
         
         //Erste Zeile
         for (int col = 2; col <= x; col++) {
-            box = new Box(list.get(col-2).get(0).getLeftLine(), Line.POSITION_LEFT);
+            box = new Box(list.get(col-2).get(0).getRightLine(), Line.POSITION_LEFT);
             boxes = new ArrayList<>();
             boxes.add(box);
             list.add(boxes);
@@ -53,8 +53,8 @@ public class Game {
         //Rest
         for (int col = 2; col <= x; col++) {
             for (int row = 2; row <= y; row++) {
-                Line left = list.get(col-2).get(row-1).getLeftLine();
-                Line up = list.get(col-1).get(row-2).getUpperLine();
+                Line left = list.get(col-2).get(row-1).getRightLine();
+                Line up = list.get(col-1).get(row-2).getBottomLine();
                 box = new Box(up, left);
                 list.get(col-1).add(box);
             }
