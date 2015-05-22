@@ -5,6 +5,7 @@
  */
 package dotandboxes;
 
+import java.awt.Container;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -22,7 +23,6 @@ public class StatusBar extends JPanel {
     public StatusBar(String namePlayer, String nameEnemy) {
         super();
         GridLayout layout = new GridLayout();
-        layout.setColumns(3);
         this.setLayout(layout);
         scorePlayer = 0;
         scoreEnemy = 0;
@@ -39,6 +39,19 @@ public class StatusBar extends JPanel {
         //Feld rechts
         JTextArea feldRechts = new JTextArea(whosTurn);
         
+        Container links = new Container();
+        links.setLayout(new GridLayout());
+        links.add(feldLinks1);
+        links.add(feldLinks2);
+        
+        Container mitte = new Container();
+        mitte.add(feldMitte1);
+        mitte.add(feldMitte2);
+        
+        this.add(links);
+        this.add(mitte);
+        this.add(feldRechts);
+        
         
         this.setVisible(true);
         
@@ -46,6 +59,6 @@ public class StatusBar extends JPanel {
     }
     
     private void getWhosTurn() {
-        
+        Game.currentPlayer.getName();
     }
 }
