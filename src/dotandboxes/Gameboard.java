@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  * visual Parts of the programm.
  * @author Caro
  */
-public class Gameboard extends JPanel implements PictureListener {
+public class Gameboard extends JPanel {
 
     private GridBagLayout grid;
     GridBagConstraints gridBag;
@@ -35,7 +35,6 @@ public class Gameboard extends JPanel implements PictureListener {
         this.setLayout(grid);
         gridBag = new GridBagConstraints();
         createGrid(list);
-        LinePicture.addListener(this);
         this.setVisible(true);
     }    
     
@@ -89,9 +88,7 @@ public class Gameboard extends JPanel implements PictureListener {
     /**
      * Implements Listener Methods.
      */
-    public void pictureEvent() {
-        repaint();
-    }
+
     
     
 }

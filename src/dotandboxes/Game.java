@@ -6,9 +6,12 @@
 package dotandboxes;
 
 import dotandboxes.Models.Box;
+import dotandboxes.Models.BoxListener;
 import dotandboxes.Models.Player;
 import dotandboxes.Models.Line;
 import dotandboxes.Models.ComputerPlayer;
+import dotandboxes.Models.GameEvent;
+import dotandboxes.Models.GameListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +19,8 @@ import java.util.List;
  *
  * @author Caro
  */
-public class Game {
+public class Game implements BoxListener {
+    private static ArrayList<GameListener> listeners = new ArrayList<>();
     private List<List<Box>> list;
     public static  Player player;
     public static  Player enemy;
@@ -93,5 +97,22 @@ public class Game {
     
     public static boolean isPlayersTurn() {
         return (currentPlayer == player);
+    }
+    
+    
+    public static void addListener(GameListener toAdd) {
+        listeners.add(toAdd);
+    }
+    
+    public void boxEvent(Boolean boxFilled) {
+        GameEvent event = new GameEvent(currentPlayer, boxFilled);
+        for (GameListener hl : listeners)
+            hl.gameEvent(event);
+        if (currentPlayer == player) {
+            currentPlayer = enemy;
+        }
+        else {
+            currentPlayer = player;
+        }
     }
 }

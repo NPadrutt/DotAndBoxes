@@ -5,19 +5,25 @@
  */
 package dotandboxes.Gui;
 
+import dotandboxes.LinePicture;
+import static dotandboxes.LinePicture.listeners;
 import dotandboxes.Models.Box;
+import dotandboxes.Models.BoxListener;
+import dotandboxes.PictureListener;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
  * BoxPicture is the visual part of the Box. It fills with the color of a player when finished.
  * @author Caro
  */
-public class BoxPicture extends JPanel {
+public class BoxPicture extends JPanel implements PictureListener{
     
+    public static ArrayList<BoxListener> listeners = new ArrayList<>();
     private static final Color colorBlank = Color.YELLOW;
     private static final Color colorPainted = Color.RED;
     private static final int DIMENSION = 50;
@@ -32,6 +38,8 @@ public class BoxPicture extends JPanel {
     this.setPreferredSize(new Dimension(DIMENSION, DIMENSION));
     this.setMinimumSize(new Dimension(DIMENSION/2, DIMENSION/2));
     this.setMaximumSize(new Dimension(DIMENSION*2, DIMENSION*2));
+    LinePicture.addListener(this);
+    
     }
     
     
@@ -45,6 +53,24 @@ public class BoxPicture extends JPanel {
         else {
             color = colorBlank;
         }
+    }
+    
+    
+    public static void addListener(BoxListener toAdd) {
+        listeners.add(toAdd);
+    }
+    
+    
+    public void pictureEvent() {
+        if((color == colorBlank)&&(box.isBoxFull())) {
+            for (BoxListener hl : listeners)
+            hl.boxEvent(true);
+        }
+        else {
+            for (BoxListener hl : listeners)
+            hl.boxEvent(false);
+        }
+        repaint();
     }
     
     
