@@ -1,11 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dotandboxes;
 
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -29,14 +33,16 @@ public class CreateGameDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        labelSpielerName = new javax.swing.JLabel();
-        textFieldPlayerName = new javax.swing.JTextField();
-        buttonCreateGame = new javax.swing.JButton();
-        labelGameboardSize = new javax.swing.JLabel();
-        spinnerGameboardSize = new javax.swing.JSpinner();
-        labelGameMode = new javax.swing.JLabel();
-        radiobuttonLocal = new javax.swing.JRadioButton();
-        radiobuttonNetwork = new javax.swing.JRadioButton();
+        labelSpielerName = new JLabel();
+        textFieldPlayerName = new JTextField();
+        buttonCreateGame = new JButton();
+        labelGameboardSize = new JLabel();
+        
+        SpinnerModel model = new SpinnerNumberModel(3,3,30, 1);
+        spinnerGameboardSize = new JSpinner(model);
+        labelGameMode = new JLabel();
+        radiobuttonLocal = new JRadioButton();
+        radiobuttonNetwork = new JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -45,31 +51,28 @@ public class CreateGameDialog extends javax.swing.JDialog {
         labelSpielerName.setLabelFor(textFieldPlayerName);
         labelSpielerName.setText("Spielername");
 
-        textFieldPlayerName.setName("textFieldPlayerName"); // NOI18N
+        textFieldPlayerName.setName("textFieldPlayerName");
 
         buttonCreateGame.setText("Los Gehts!");
-        buttonCreateGame.setName("buttonStart"); // NOI18N
-        buttonCreateGame.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StartGame(evt);
-            }
+        buttonCreateGame.setName("buttonStart");
+        buttonCreateGame.addActionListener((ActionEvent evt) -> {
+            StartGame(evt);
         });
 
         labelGameboardSize.setLabelFor(spinnerGameboardSize);
         labelGameboardSize.setText("Spielfeldgrösse");
-
-        spinnerGameboardSize.setName("spinnerGameboardSize"); // NOI18N
+        
+        spinnerGameboardSize.setName("spinnerGameboardSize");
 
         labelGameMode.setLabelFor(radiobuttonLocal);
         labelGameMode.setText("Spielmodus");
 
         radiobuttonLocal.setText("Lokal");
         radiobuttonLocal.setActionCommand("radioButtonLocal");
-        radiobuttonLocal.setName("radioButtonLocal"); // NOI18N
+        radiobuttonLocal.setName("radioButtonLocal");
 
         radiobuttonNetwork.setText("Netzwerk");
-        radiobuttonNetwork.setName("radioButtonNetwork"); // NOI18N
+        radiobuttonNetwork.setName("radioButtonNetwork");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,6 +138,7 @@ public class CreateGameDialog extends javax.swing.JDialog {
     
     public void StartGame(java.awt.event.ActionEvent ev){
         setVisible(false);      
+        dispose();
     }
 
     /**
