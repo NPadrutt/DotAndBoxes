@@ -20,24 +20,16 @@ import javax.swing.JPanel;
  *
  * @author lmal
  */
-public class DotAndBoxes extends javax.swing.JFrame implements ActionListener {    
+public class DotAndBoxes extends JFrame {    
     
     static CreateGameDialog dialog;
     
     private void GUI() {        
-        dialog = new CreateGameDialog(this, true);
+        dialog = new CreateGameDialog(this);
         dialog.setVisible(true);
         createGame ();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // System.out.println("actionPerformed: " + e.getActionCommand());
-
-        if (e.getActionCommand().equals("Exit")) {
-                this.dispose();
-        }
-    }
     
     public  void createGame (){        
         JFrame frame;
@@ -46,17 +38,15 @@ public class DotAndBoxes extends javax.swing.JFrame implements ActionListener {
         frame.setSize(600, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         BorderLayout thisLayout = new BorderLayout();
-        frame.getContentPane().setLayout(thisLayout); 
+        frame.setLayout(thisLayout); 
 
         Game game = new Game(dialog.getGameboardSize(),dialog.getGameboardSize(),dialog.getPlayerName(),dialog.getGamemode());
         Gameboard gameboard = new Gameboard(game.getList());
 
-        frame.add(gameboard);
+        frame.add(gameboard, BorderLayout.CENTER);
 
         JMenuBar menuBar = new JMenuBar();
-        frame.setJMenuBar(menuBar);
-
-
+        
         JMenu gameMenu = new JMenu("Game");
         menuBar.add(gameMenu);
 
@@ -72,6 +62,8 @@ public class DotAndBoxes extends javax.swing.JFrame implements ActionListener {
         // Help
         JMenu helpMenu = new JMenu("Help");
         menuBar.add(helpMenu);
+        
+        frame.setJMenuBar(menuBar);
 
 
         // status bar
@@ -80,9 +72,9 @@ public class DotAndBoxes extends javax.swing.JFrame implements ActionListener {
         statsuBarLayout.columnWeights = new double[] { 0.05, 0.45, 0.45,0.05 };
         statsuBarLayout.columnWidths = new int[] { 7, 7, 7, 7 };
         statusBarPanel.setLayout(statsuBarLayout);
-        frame.getContentPane().add(statusBarPanel, BorderLayout.SOUTH);
         statusBarPanel.setVisible(true);
         statusBarPanel.setFocusable(false);
+        frame.add(statusBarPanel, BorderLayout.SOUTH);
         
         frame.pack();
         frame.setVisible(true);
