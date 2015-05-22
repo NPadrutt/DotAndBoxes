@@ -3,8 +3,7 @@ package dotandboxes;
 import dotandboxes.Gui.BoxPicture;
 import dotandboxes.Gui.DotPicture;
 import dotandboxes.Models.Box;
-import dotandboxes.Models.GameEvent;
-import dotandboxes.Models.GameListener;
+import dotandboxes.Models.EnemyListener;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -17,7 +16,7 @@ import javax.swing.JPanel;
  * visual Parts of the programm.
  * @author Caro
  */
-public class Gameboard extends JPanel implements PictureListener {
+public class Gameboard extends JPanel implements PictureListener, EnemyListener {
 
     private GridBagLayout grid;
     GridBagConstraints gridBag;
@@ -93,5 +92,9 @@ public class Gameboard extends JPanel implements PictureListener {
         repaint();
     }
     
+    
+    public void enemyEvent() {
+        repaint();
+    }
     
 }

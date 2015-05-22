@@ -1,5 +1,7 @@
 package dotandboxes.Models;
 
+import dotandboxes.Game;
+
 /**
  *
  * @author Nino
@@ -30,5 +32,6 @@ public class Player {
     
     public void increaseScore(){
         score ++;
-    }    
+    }
+    
 }

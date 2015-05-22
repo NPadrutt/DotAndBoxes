@@ -11,7 +11,6 @@ import dotandboxes.Models.BoxListener;
 import dotandboxes.Models.Player;
 import dotandboxes.Models.Line;
 import dotandboxes.Models.ComputerPlayer;
-import dotandboxes.Models.GameEvent;
 import dotandboxes.Models.GameListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ import java.util.List;
  *
  * @author Caro
  */
-public class Game implements BoxListener {
+public class Game implements PictureListener {
     private static ArrayList<GameListener> listeners = new ArrayList<>();
     private List<List<Box>> list;
     private static Player player;
@@ -73,7 +72,7 @@ public class Game implements BoxListener {
         else if (modus.equals(Gamemode.Network)) {
             
         }
-        BoxPicture.addListener(this);
+        LinePicture.addListener(this);
     }
     
     /**
@@ -115,15 +114,29 @@ public class Game implements BoxListener {
     }
     
     
+    private Boolean newFullBox() {
+        for(List<Box> boxes: list) {
+            for(Box box: boxes) {
+                if(box.isNewFull()) {
+                return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    
     public static void addListener(GameListener toAdd) {
         listeners.add(toAdd);
     }
     
+    
     @Override
-    public void boxEvent(Boolean boxFilled) {
-        GameEvent event = new GameEvent(currentPlayer, boxFilled);
-        othersTurn();
-        for (GameListener hl : listeners)
-            hl.gameEvent(event);
+    public void pictureEvent() {
+        if(!newFullBox()) {
+            othersTurn();
+            for (GameListener hl : listeners)
+            hl.gameEvent();
+        }
     }
 }

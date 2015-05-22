@@ -123,7 +123,7 @@ public class LinePicture extends JPanel {
         listeners.add(toAdd);
     }
 
-    public void pictureEvent() {
+    public static void pictureEvent() {
         for (PictureListener hl : listeners)
             hl.pictureEvent();
     }

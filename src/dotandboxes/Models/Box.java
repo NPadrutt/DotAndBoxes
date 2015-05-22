@@ -6,12 +6,14 @@ public class Box {
     private Line upperLine;
     private Line rightLine;
     private Line bottomLine;
+    private Boolean marked;
     
     public Box(){ 
         leftLine = new Line();
         upperLine = new Line();
         rightLine = new Line();
         bottomLine = new Line();
+        marked = false;
     }
     
     public Box(Line line, String Position){
@@ -29,6 +31,7 @@ public class Box {
         }
         this.rightLine = new Line();
         this.bottomLine = new Line();
+        marked = false;
     }
     
     public Box(Line upperLine, Line leftLine){
@@ -36,6 +39,7 @@ public class Box {
         this.leftLine = leftLine;
         this.rightLine = new Line();
         this.bottomLine = new Line();
+        marked = false;
     }
     
     public Line getLeftLine(){
@@ -59,6 +63,17 @@ public class Box {
                 && upperLine.getIsMarked()
                 && rightLine.getIsMarked() 
                 && bottomLine.getIsMarked();
+    }
+    
+    public Boolean isNewFull() {
+        Boolean state = (leftLine.getIsMarked() 
+                        && upperLine.getIsMarked()
+                        && rightLine.getIsMarked() 
+                        && bottomLine.getIsMarked()) && !marked;
+        if(isBoxFull()) {
+            marked = true;
+        }
+        return state;
     }
     
     @Override

@@ -6,6 +6,8 @@
 package dotandboxes.Models;
 
 import dotandboxes.Enemy;
+import dotandboxes.Game;
+import dotandboxes.LinePicture;
 import java.util.List;
 import java.util.Random;
 
@@ -13,7 +15,7 @@ import java.util.Random;
  *
  * @author Caro
  */
-public class ComputerPlayer extends Player implements Enemy {
+public class ComputerPlayer extends Enemy implements GameListener {
     
     List<List<Box>> list;
     
@@ -29,11 +31,21 @@ public class ComputerPlayer extends Player implements Enemy {
         this.list = list;
     }
     
+    @Override
+    public void gameEvent() {
+        if(Game.getCurrentPlayer() == this) {
+            play();
+        }
+    }
+    
+    @Override
     public void play() {
         for(List<Box> boxes: list) {
             for(Box box: boxes) {
                 if (box.isNearlyFull()) {
                     box.getLastLine().setIsMarked(true);
+                    super.increaseScore();
+                    enemyEvent();
                 }
             }
         }
@@ -60,6 +72,7 @@ public class ComputerPlayer extends Player implements Enemy {
                     marked = !marked;
                 }
             }
+            enemyEvent();
         } while (!marked);
     }
 }

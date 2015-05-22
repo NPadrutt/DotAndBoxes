@@ -5,12 +5,35 @@
  */
 package dotandboxes;
 
+import dotandboxes.Models.EnemyListener;
+import dotandboxes.Models.Player;
+import java.util.ArrayList;
+
 /**
  *
  * @author Caro
  */
-public interface Enemy {
+public abstract class Enemy extends Player {
     
-    public void play();
+    public static ArrayList<EnemyListener> listeners;
+    
+    public Enemy() {
+        super();
+    }
+    
+    public Enemy(int score) {
+        super(score);
+    }
+    
+    public static void addListener(EnemyListener toAdd) {
+        listeners.add(toAdd);
+    }
+    
+    public void enemyEvent() {
+        for (EnemyListener hl : listeners)
+            hl.enemyEvent();
+    }
+    
+    public abstract void play();
     
 }

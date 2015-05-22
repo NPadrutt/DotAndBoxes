@@ -21,7 +21,7 @@ import javax.swing.JPanel;
  * BoxPicture is the visual part of the Box. It fills with the color of a player when finished.
  * @author Caro
  */
-public class BoxPicture extends JPanel implements PictureListener{
+public class BoxPicture extends JPanel {
     
     public static ArrayList<BoxListener> listeners = new ArrayList<>();
     private static final Color colorBlank = Color.YELLOW;
@@ -38,7 +38,6 @@ public class BoxPicture extends JPanel implements PictureListener{
     this.setPreferredSize(new Dimension(DIMENSION, DIMENSION));
     this.setMinimumSize(new Dimension(DIMENSION/2, DIMENSION/2));
     this.setMaximumSize(new Dimension(DIMENSION*2, DIMENSION*2));
-    LinePicture.addListener(this);
     
     }
     
@@ -56,22 +55,7 @@ public class BoxPicture extends JPanel implements PictureListener{
     }
     
     
-    public static void addListener(BoxListener toAdd) {
-        listeners.add(toAdd);
-    }
-    
-    
-    public void pictureEvent() {
-        if((color == colorBlank)&&(box.isBoxFull())) {
-            for (BoxListener hl : listeners)
-            hl.boxEvent(true);
-        }
-        else {
-            for (BoxListener hl : listeners)
-            hl.boxEvent(false);
-        }
-        repaint();
-    }
+
     
     
     /**

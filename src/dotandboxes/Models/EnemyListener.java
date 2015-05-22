@@ -9,8 +9,10 @@ package dotandboxes.Models;
  *
  * @author Caro
  */
-public interface GameListener {
+public interface EnemyListener {
     
-    void gameEvent();
+    public void enemyEvent();
+    
+    
     
 }
