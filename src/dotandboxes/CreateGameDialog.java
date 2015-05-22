@@ -77,7 +77,8 @@ public class CreateGameDialog extends javax.swing.JDialog {
         labelGameMode.setText("Spielmodus");
         
         radiobuttonLocal.setText("Lokal");
-        radiobuttonNetwork.setText("Netzwerk");        
+        radiobuttonLocal.setSelected(true);
+        radiobuttonNetwork.setText("Netzwerk");
         
         labelIpEnemy.setText("IP-Adresse des Gegners");
         labelIpEnemy.setVisible(false);
@@ -142,8 +143,10 @@ public class CreateGameDialog extends javax.swing.JDialog {
         pack();
     }
     
-    public String getPlayerName(){
-        return textFieldPlayerName.getText();
+    public String getPlayerName(){    
+        return textFieldPlayerName.getText() != null 
+                ? textFieldPlayerName.getText()
+                : "Player";
     }
     
     public int getGameboardSize(){
