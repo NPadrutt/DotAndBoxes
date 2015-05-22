@@ -24,6 +24,11 @@ public class DotAndBoxes extends JFrame {
     
     static CreateGameDialog dialog;
     
+    public DotAndBoxes() {
+        super("Dots and Boxes");
+        GUI();
+    }
+    
     private void GUI() {        
         dialog = new CreateGameDialog(this);
         dialog.setVisible(true);
@@ -32,18 +37,15 @@ public class DotAndBoxes extends JFrame {
 
     
     public  void createGame (){        
-        JFrame frame;
-        frame = new JFrame();
-        frame.setTitle("Dots and Boxes");
-        frame.setSize(600, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(600, 400);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         BorderLayout thisLayout = new BorderLayout();
-        frame.setLayout(thisLayout); 
+        this.setLayout(thisLayout); 
 
         Game game = new Game(dialog.getGameboardSize(),dialog.getGameboardSize(),dialog.getPlayerName(),dialog.getGamemode());
         Gameboard gameboard = new Gameboard(game.getList());
 
-        frame.add(gameboard, BorderLayout.CENTER);
+        this.add(gameboard, BorderLayout.CENTER);
 
         JMenuBar menuBar = new JMenuBar();
         
@@ -63,7 +65,7 @@ public class DotAndBoxes extends JFrame {
         JMenu helpMenu = new JMenu("Help");
         menuBar.add(helpMenu);
         
-        frame.setJMenuBar(menuBar);
+        this.setJMenuBar(menuBar);
 
 
         // status bar
@@ -74,16 +76,15 @@ public class DotAndBoxes extends JFrame {
         statusBarPanel.setLayout(statsuBarLayout);
         statusBarPanel.setVisible(true);
         statusBarPanel.setFocusable(false);
-        frame.add(statusBarPanel, BorderLayout.SOUTH);
+        this.add(statusBarPanel, BorderLayout.SOUTH);
         
-        frame.pack();
-        frame.setVisible(true);
+        this.pack();
+        this.setVisible(true);
         
     }
     
      public static void main(String[] args){            
-        DotAndBoxes game = new DotAndBoxes();
-        game.GUI();    
+        DotAndBoxes game = new DotAndBoxes();  
         
      }
 }
