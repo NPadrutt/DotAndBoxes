@@ -44,7 +44,6 @@ public class DotAndBoxes extends javax.swing.JFrame implements ActionListener {
         frame = new JFrame();
         frame.setTitle("Dots and Boxes");
         frame.setSize(600, 400);
-        frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         BorderLayout thisLayout = new BorderLayout();
         frame.getContentPane().setLayout(thisLayout); 
@@ -66,9 +65,9 @@ public class DotAndBoxes extends javax.swing.JFrame implements ActionListener {
         gameMenu.add(newGameMenuItem);
 
         // Exit
-        JMenuItem exitMenuItem = new JMenuItem("Exit");
-        exitMenuItem.addActionListener((ActionListener) frame);
-        gameMenu.add(exitMenuItem);
+        //JMenuItem exitMenuItem = new JMenuItem("Exit");
+        //exitMenuItem.addActionListener((ActionListener) frame);
+        //gameMenu.add(exitMenuItem);
 
         // Help
         JMenu helpMenu = new JMenu("Help");
@@ -84,7 +83,10 @@ public class DotAndBoxes extends javax.swing.JFrame implements ActionListener {
         frame.getContentPane().add(statusBarPanel, BorderLayout.SOUTH);
         statusBarPanel.setVisible(true);
         statusBarPanel.setFocusable(false);
-
+        
+        frame.pack();
+        frame.setVisible(true);
+        
     }
     
      public static void main(String[] args){            
