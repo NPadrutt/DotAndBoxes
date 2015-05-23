@@ -88,12 +88,12 @@ public class Game implements PictureListener {
     }    
     
     
-    public String getPlayername() {
-        return player.getName();
+    public Player getPlayer() {
+        return player;
     }
     
-    public String getEnemyname(){
-        return enemy.getName();
+    public Player getEnemy(){
+        return enemy;
     }
     
     public static boolean isPlayersTurn() {

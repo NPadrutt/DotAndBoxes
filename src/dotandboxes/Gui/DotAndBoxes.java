@@ -1,10 +1,9 @@
 package dotandboxes.Gui;
 
-import dotandboxes.Enemy;
 import dotandboxes.Game;
 import dotandboxes.Gameboard;
-import dotandboxes.Models.EnemyListener;
 import java.awt.BorderLayout;
+import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -60,7 +59,7 @@ public class DotAndBoxes extends JFrame {
 
 
         // status bar
-        StatusBar statusBarPanel = new StatusBar(game.getPlayername(), game.getEnemyname());
+        StatusBar statusBarPanel = new StatusBar(game.getPlayer(), game.getEnemy());
         this.add(statusBarPanel, BorderLayout.SOUTH);
         
         this.pack();
@@ -72,4 +71,6 @@ public class DotAndBoxes extends JFrame {
      public static void main(String[] args){            
         new DotAndBoxes();        
      }
+     
+
 }
