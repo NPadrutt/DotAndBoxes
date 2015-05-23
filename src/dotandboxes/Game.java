@@ -138,5 +138,8 @@ public class Game implements PictureListener {
             for (GameListener hl : listeners)
             hl.gameEvent();
         }
+        else {
+            player.increaseScore();
+        }
     }
 }
