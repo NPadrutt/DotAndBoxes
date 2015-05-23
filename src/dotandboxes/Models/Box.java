@@ -78,6 +78,10 @@ public class Box {
         return false;
     }
     
+    public void isNowFull() {
+        marked = true;
+    }
+    
     @Override
     public String toString(){
         return "";

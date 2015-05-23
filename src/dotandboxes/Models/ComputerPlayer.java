@@ -22,14 +22,14 @@ public class ComputerPlayer extends Enemy implements GameListener {
     public ComputerPlayer(List<List<Box>> list) {
         super();
         super.setName("Computer");
-        this.list = list;
+        ComputerPlayer.list = list;
         Game.addListener(this);
     }
     
     public ComputerPlayer(List<List<Box>> list, int score) {
         super(score);
         super.setName("Computer");
-        this.list = list;
+        ComputerPlayer.list = list;
         Game.addListener(this);
     }
     
@@ -46,6 +46,7 @@ public class ComputerPlayer extends Enemy implements GameListener {
             for(Box box: boxes) {
                 if (box.isNearlyFull()) {
                     box.getLastLine().setIsMarked(true);
+                    box.isNowFull();
                     super.increaseScore();
                     enemyEvent();
                 }
@@ -68,7 +69,7 @@ public class ComputerPlayer extends Enemy implements GameListener {
                     list.get(x).get(y).getUpperLine().setIsMarked(true);
                     marked = !marked;
                 }
-                else {
+                else if (!list.get(x).get(y).getRightLine().getIsMarked()){
                     list.get(x).get(y).getLeftLine().setIsMarked(true);
                     marked = !marked;
                 }
