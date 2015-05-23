@@ -5,6 +5,7 @@
  */
 package dotandboxes.Gui;
 
+import dotandboxes.Game;
 import dotandboxes.LinePicture;
 import static dotandboxes.LinePicture.listeners;
 import dotandboxes.Models.Box;
@@ -25,7 +26,8 @@ public class BoxPicture extends JPanel {
     
     public static ArrayList<BoxListener> listeners = new ArrayList<>();
     private static final Color colorBlank = Color.YELLOW;
-    private static final Color colorPainted = Color.RED;
+    private static final Color colorPlayer = Color.RED;
+    private static final Color colorEnemy = Color.BLUE;
     private static final int DIMENSION = 50;
     private Color color;
     private Box box;
@@ -47,7 +49,12 @@ public class BoxPicture extends JPanel {
      */
     private void setColor() {
         if(box.isBoxFull()) {
-            color = colorPainted;
+            if(box.getMarkedBy() == Game.getPlayer()) {
+                color = colorPlayer;
+            }
+            else {
+                color = colorEnemy;
+            }
         }
         else {
             color = colorBlank;

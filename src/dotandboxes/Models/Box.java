@@ -1,5 +1,7 @@
 package dotandboxes.Models;
 
+import dotandboxes.Game;
+
 public class Box {
     
     private Line leftLine;
@@ -7,6 +9,7 @@ public class Box {
     private Line rightLine;
     private Line bottomLine;
     private Boolean marked;
+    private Player markedBy;
     
     public Box(){ 
         leftLine = new Line();
@@ -72,6 +75,7 @@ public class Box {
                         && rightLine.getIsMarked() 
                         && bottomLine.getIsMarked()) {
                 marked = true;
+                markedBy = Game.getCurrentPlayer();
             }
             return marked;
         }
@@ -116,5 +120,9 @@ public class Box {
         else {
             return null;
         }
+    }
+    
+    public Player getMarkedBy() {
+        return markedBy;
     }
 }

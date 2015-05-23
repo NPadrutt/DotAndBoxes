@@ -88,11 +88,11 @@ public class Game implements PictureListener {
     }    
     
     
-    public Player getPlayer() {
+    public static Player getPlayer() {
         return player;
     }
     
-    public Player getEnemy(){
+    public static Player getEnemy(){
         return enemy;
     }
     
