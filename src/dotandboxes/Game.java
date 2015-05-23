@@ -135,11 +135,11 @@ public class Game implements PictureListener {
     public void pictureEvent() {
         if(!newFullBox()) {
             othersTurn();
-            for (GameListener hl : listeners)
-            hl.gameEvent();
         }
         else {
             player.increaseScore();
         }
+        for (GameListener hl : listeners)
+        hl.gameEvent();
     }
 }

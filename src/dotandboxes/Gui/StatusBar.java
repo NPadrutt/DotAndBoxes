@@ -7,7 +7,7 @@ package dotandboxes.Gui;
 
 import dotandboxes.Enemy;
 import dotandboxes.Game;
-import dotandboxes.Models.EnemyListener;
+import dotandboxes.Models.GameListener;
 import dotandboxes.Models.Player;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -22,7 +22,7 @@ import javax.swing.JTextArea;
  *
  * @author Caro
  */
-public class StatusBar extends JPanel implements EnemyListener {
+public class StatusBar extends JPanel implements GameListener {
     
     Player player;
     Player enemy;
@@ -91,7 +91,7 @@ public class StatusBar extends JPanel implements EnemyListener {
         this.add(mitte);
         this.add(rechts);
         
-        Enemy.addListener(this);
+        Game.addListener(this);
         this.setVisible(true);
     }
     
@@ -100,7 +100,7 @@ public class StatusBar extends JPanel implements EnemyListener {
     }
     
     @Override
-    public void enemyEvent() {
+    public void gameEvent() {
         repaint();
     }
     
