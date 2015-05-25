@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dotandboxes.Models;
 
 import dotandboxes.Enemy;
@@ -10,10 +5,7 @@ import dotandboxes.Game;
 import java.util.List;
 import java.util.Random;
 
-/**
- *
- * @author Caro
- */
+
 public class ComputerPlayer extends Enemy implements GameListener {
     
     private static List<List<Box>> list;

@@ -13,6 +13,4 @@ public interface EnemyListener {
     
     public void enemyEvent();
     
-    
-    
 }

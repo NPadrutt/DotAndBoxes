@@ -34,6 +34,5 @@ public abstract class Enemy extends Player {
             hl.enemyEvent();
     }
     
-    public abstract void play();
-    
+    public abstract void play();    
 }

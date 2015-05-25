@@ -1,8 +1,9 @@
 package dotandboxes.Models;
 
+import dotandboxes.Enemy;
 import dotandboxes.Game;
 
-public class NetworkPlayer extends Player implements GameListener {
+public class NetworkPlayer extends Enemy implements GameListener {
     private String ipAddress;
     
     public NetworkPlayer(String ipAddress){
@@ -25,6 +26,7 @@ public class NetworkPlayer extends Player implements GameListener {
         }
     }
     
+    @Override
     public void play() {
                 
     }

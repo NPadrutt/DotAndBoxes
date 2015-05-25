@@ -1,11 +1,5 @@
 package dotandboxes.Models;
 
-import dotandboxes.Game;
-
-/**
- *
- * @author Nino
- */
 public class Player {    
     private String name;
     private int score;
@@ -32,6 +26,5 @@ public class Player {
     
     public void increaseScore(){
         score ++;
-    }
-    
+    }    
 }
