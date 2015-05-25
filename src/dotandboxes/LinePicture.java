@@ -151,4 +151,8 @@ public class LinePicture extends JPanel {
         }
         
     }
+    
+    public Line getClickedLine(){
+        return this.line;
+    }
 }

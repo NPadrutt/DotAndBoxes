@@ -6,11 +6,8 @@
 package dotandboxes.Gui;
 
 import dotandboxes.Game;
-import dotandboxes.LinePicture;
-import static dotandboxes.LinePicture.listeners;
 import dotandboxes.Models.Box;
 import dotandboxes.Models.BoxListener;
-import dotandboxes.PictureListener;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -60,10 +57,6 @@ public class BoxPicture extends JPanel {
             color = colorBlank;
         }
     }
-    
-    
-
-    
     
     /**
      * Draw a square with the size DIMENSION but just filled half and of the color blue.

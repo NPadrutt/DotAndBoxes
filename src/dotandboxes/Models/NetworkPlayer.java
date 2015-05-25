@@ -28,6 +28,6 @@ public class NetworkPlayer extends Enemy implements GameListener {
     
     @Override
     public void play() {
-                
+        
     }
 }

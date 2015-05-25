@@ -40,6 +40,4 @@ public class DotPicture extends JPanel {
         g.setColor(color);
         g.fillOval(0, 0, this.getWidth(), this.getHeight());
     }
-    
-    
 }
