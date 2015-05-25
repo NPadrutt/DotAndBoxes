@@ -1,5 +1,31 @@
 package dotandboxes.Models;
 
-public class NetworkPlayer extends Player {
+import dotandboxes.Game;
+
+public class NetworkPlayer extends Player implements GameListener {
+    private String ipAddress;
     
+    public NetworkPlayer(String ipAddress){
+        this.ipAddress = ipAddress;
+        setName("Computer Player");
+    }
+    
+    public void SendTurn(){
+        
+    } 
+    
+    public void ReceiveTurn(){
+        
+    }
+
+    @Override
+    public void gameEvent() {
+        if(Game.getCurrentPlayer() == this) {
+            play();
+        }
+    }
+    
+    public void play() {
+                
+    }
 }
