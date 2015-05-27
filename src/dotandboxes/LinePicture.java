@@ -98,8 +98,7 @@ public class LinePicture extends JPanel {
         repaint();
         pictureEvent();
     }
-    
-    
+        
     /**
      * Highlight the line.
      */
@@ -109,7 +108,6 @@ public class LinePicture extends JPanel {
         }
         repaint();
     }
-    
     
     /**
      * Reverse highlighting the line.
@@ -150,9 +148,5 @@ public class LinePicture extends JPanel {
             g.fillRect(0, this.getHeight()/4, this.getWidth(), this.getHeight()/2);
         }
         
-    }
-    
-    public Line getClickedLine(){
-        return this.line;
     }
 }

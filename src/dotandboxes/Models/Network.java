@@ -24,8 +24,8 @@ public class Network {
             while(true){    
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length); 
                 serverSocket.receive(receivePacket);
-                String data = new String( receivePacket.getData()); 
-                System.out.println("RECEIVED: " + data);    
+                String data = new String( receivePacket.getData());
+                System.out.println("RECEIVED: " + data);
                 ipAddress = receivePacket.getAddress();             
                 port = receivePacket.getPort();
                 return data;
@@ -46,11 +46,7 @@ public class Network {
         }
         
         try (DatagramSocket clientSocket = new DatagramSocket()) {
-            BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
-            
-            byte[] sendData = data.getBytes();
-            String sentence = inFromUser.readLine();   
-            sendData = sentence.getBytes();       
+            byte[] sendData = data.getBytes(); 
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress , port);     
             clientSocket.send(sendPacket);
             clientSocket.close();

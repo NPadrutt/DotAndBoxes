@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dotandboxes;
 
-import dotandboxes.Gui.BoxPicture;
 import dotandboxes.Models.Box;
-import dotandboxes.Models.BoxListener;
 import dotandboxes.Models.Player;
 import dotandboxes.Models.Line;
 import dotandboxes.Models.ComputerPlayer;
