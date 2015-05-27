@@ -45,6 +45,7 @@ public class ComputerPlayer extends Enemy implements GameListener {
             }
         }
         Boolean marked = false;
+        Boolean allFull = false;
         do {
             int x = random.nextInt(list.size());
             int y = random.nextInt(list.get(0).size());
@@ -66,7 +67,13 @@ public class ComputerPlayer extends Enemy implements GameListener {
                     marked = !marked;
                 }
             }
-        } while (!marked);
+                        
+            for(List<Box> boxList : list){
+                for(Box box : boxList ) {
+                    allFull = box.isBoxFull();
+                }
+            }
+        } while (!marked && !allFull);
         enemyEvent();
         Game.othersTurn();
     }
