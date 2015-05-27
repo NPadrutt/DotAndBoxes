@@ -90,15 +90,11 @@ public class StatusBar extends JPanel implements GameListener {
     
     @Override
     public void gameEvent() {
-        repaint();
-    }
-    
-    @Override
-    public void paintComponent(Graphics g) {
         getWhosTurn();
         feldLinks2.setText("" + player.getScore());
         feldMitte2.setText("" + enemy.getScore());
         feldRechts.setText(whosTurn);
-        super.paintComponents(g);
+        
+        repaint();
     }
 }

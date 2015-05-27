@@ -145,7 +145,7 @@ public class CreateGameDialog extends javax.swing.JDialog {
     }
     
     public String getPlayerName(){    
-        return textFieldPlayerName.getText() != null 
+        return !textFieldPlayerName.getText().equals("")
                 ? textFieldPlayerName.getText()
                 : "Player";
     }
