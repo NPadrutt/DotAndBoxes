@@ -4,6 +4,8 @@ import dotandboxes.Game;
 import dotandboxes.Gameboard;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -27,9 +29,8 @@ public class DotAndBoxes extends JFrame {
         dialog.setVisible(true);
         createGame ();
     }
-
     
-    public  void createGame (){        
+    public void createGame (){        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
@@ -43,34 +44,29 @@ public class DotAndBoxes extends JFrame {
         JMenu gameMenu = new JMenu("Game");
         menuBar.add(gameMenu);
 
-
         JMenuItem newGameMenuItem = new JMenuItem("New Game");
+        newGameMenuItem.addActionListener((ActionEvent e) -> {
+            new DotAndBoxes();
+        });
         gameMenu.add(newGameMenuItem);
 
         // Exit
         JMenuItem exitMenuItem = new JMenuItem("Exit");
+        exitMenuItem.addActionListener((ActionEvent e) -> {
+            System.exit(0);            
+        });
         gameMenu.add(exitMenuItem);
-
-        // Help
-        JMenu helpMenu = new JMenu("Help");
-        menuBar.add(helpMenu);
-        
         this.setJMenuBar(menuBar);
-
 
         // status bar
         StatusBar statusBarPanel = new StatusBar(Game.getPlayer(), Game.getEnemy());
         this.add(statusBarPanel, BorderLayout.SOUTH);
         
         this.pack();
-        this.setVisible(true);
-        
+        this.setVisible(true);       
     }
     
-    
-     public static void main(String[] args){            
-        new DotAndBoxes();        
-     }
-     
-
+    public static void main(String[] args){            
+       new DotAndBoxes();        
+    }
 }
