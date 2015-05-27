@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dotandboxes.Gui;
 
-import dotandboxes.Enemy;
 import dotandboxes.Game;
 import dotandboxes.Models.GameListener;
 import dotandboxes.Models.Player;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import javax.swing.JPanel;
@@ -91,8 +84,8 @@ public class StatusBar extends JPanel implements GameListener {
     @Override
     public void gameEvent() {
         getWhosTurn();
-        feldLinks2.setText("" + player.getScore());
-        feldMitte2.setText("" + enemy.getScore());
+        feldLinks2.setText(String.valueOf(player.getScore()));
+        feldMitte2.setText(String.valueOf(enemy.getScore()));
         feldRechts.setText(whosTurn);
         
         repaint();
