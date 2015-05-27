@@ -41,55 +41,44 @@ public class StatusBar extends JPanel implements GameListener {
         
         //Feld links
         JTextArea feldLinks1 = new JTextArea(player.getName() + ": ");
-        feldLinks1.setBackground(Color.WHITE);
+        feldLinks1.setBackground(new Color(0,0,0,0));
         feldLinks1.setEditable(false);
         feldLinks1.setVisible(true);
-        feldLinks1.setFont(new Font(Font.SANS_SERIF, Font.CENTER_BASELINE, 20));
+        feldLinks1.setFont(new Font(Font.SANS_SERIF, Font.CENTER_BASELINE, 12));
         feldLinks2 = new JTextArea("" + player.getScore());
-        feldLinks2.setBackground(Color.WHITE);
+        feldLinks2.setBackground(new Color(0,0,0,0));
         feldLinks2.setEditable(false);
         feldLinks2.setVisible(true);
-        feldLinks2.setFont(new Font(Font.SANS_SERIF, Font.CENTER_BASELINE, 20));
+        feldLinks2.setFont(new Font(Font.SANS_SERIF, Font.CENTER_BASELINE, 12));
         
         //Feld mitte
         JTextArea feldMitte1 = new JTextArea(enemy.getName() + ": ");
-        feldMitte1.setBackground(Color.WHITE);
+        feldMitte1.setBackground(new Color(0,0,0,0));
         feldMitte1.setEditable(false);
         feldMitte1.setVisible(true);
-        feldMitte1.setFont(new Font(Font.SANS_SERIF, Font.CENTER_BASELINE, 20));
+        feldMitte1.setFont(new Font(Font.SANS_SERIF, Font.CENTER_BASELINE, 12));
         feldMitte2 = new JTextArea("" + enemy.getScore());
-        feldMitte2.setBackground(Color.WHITE);
+        feldMitte2.setBackground(new Color(0,0,0,0));
         feldMitte2.setEditable(false);
         feldMitte2.setVisible(true);
-        feldMitte2.setFont(new Font(Font.SANS_SERIF, Font.CENTER_BASELINE, 20));
+        feldMitte2.setFont(new Font(Font.SANS_SERIF, Font.CENTER_BASELINE, 12));
         
         //Feld rechts
         feldRechts = new JTextArea(whosTurn);
-        feldRechts.setBackground(Color.WHITE);
+        feldRechts.setBackground(new Color(0,0,0,0));
         feldRechts.setEditable(false);
         feldRechts.setVisible(true);
-        feldRechts.setFont(new Font(Font.SANS_SERIF, Font.CENTER_BASELINE, 20));
+        feldRechts.setFont(new Font(Font.SANS_SERIF, Font.CENTER_BASELINE, 12));
+
+        JPanel unten = new JPanel();
+        unten.setLayout(new FlowLayout(FlowLayout.CENTER));
+        unten.add(feldLinks1);
+        unten.add(feldLinks2);
+        unten.add(feldMitte1);
+        unten.add(feldMitte2);
+        unten.add(feldRechts);  
         
-        JPanel links = new JPanel();
-        links.setLayout(new FlowLayout(FlowLayout.LEFT));
-        links.add(feldLinks1);
-        links.add(feldLinks2);
-        links.setBackground(Color.WHITE);
-        
-        JPanel mitte = new JPanel();
-        mitte.setLayout(new FlowLayout(FlowLayout.LEFT));
-        mitte.add(feldMitte1);
-        mitte.add(feldMitte2);
-        mitte.setBackground(Color.WHITE);
-        
-        JPanel rechts = new JPanel();
-        rechts.setLayout(new FlowLayout(FlowLayout.CENTER));
-        rechts.add(feldRechts);
-        rechts.setBackground(Color.WHITE);
-        
-        this.add(links);
-        this.add(mitte);
-        this.add(rechts);
+        this.add(unten);
         
         Game.addListener(this);
         this.setVisible(true);
