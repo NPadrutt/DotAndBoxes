@@ -1,6 +1,7 @@
 package dotandboxes.Models;
 
 import dotandboxes.Game;
+import static java.util.Collections.list;
 import java.util.List;
 import java.util.Random;
 
@@ -66,14 +67,19 @@ public class ComputerPlayer extends Enemy implements GameListener {
                     marked = !marked;
                 }
             }
-                        
-            for(List<Box> boxList : list){
-                for(Box box : boxList ) {
-                    allFull = box.isBoxFull();
-                }
-            }
-        } while (!marked && !allFull);
+            
+            CheckIfGameIsFinished();
+            
+        } while (!marked && !Game.gameFinished);
         enemyEvent();
         Game.othersTurn();
+    }
+    
+    private void CheckIfGameIsFinished(){
+        list.stream().forEach((boxList) -> {
+            boxList.stream().forEach((box) -> {
+                Game.gameFinished = box.isBoxFull();
+            });
+        });
     }
 }

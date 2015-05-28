@@ -8,6 +8,7 @@ import dotandboxes.Models.ComputerPlayer;
 import dotandboxes.Models.GameListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,11 +21,13 @@ public class Game implements PictureListener {
     private static Player enemy;
     private static Player currentPlayer;
     
+    public static Boolean gameFinished;
+    
     public Game(int x, int y, String name, Gamemode modus) {
-        
         //Spielfeld erstellen
         list = new ArrayList<>();
         ArrayList<Box> boxes = new ArrayList<>();
+        gameFinished = false;
         
         //Erste Box
         Box box = new Box();
@@ -68,15 +71,7 @@ public class Game implements PictureListener {
         }
         LinePicture.addListener(this);
     }
-    
-    /**
-     * Lädt ein Spiel von Textfile.
-     * @param filename
-     */
-    public Game (String filename) {
-        
-    }
-    
+  
     public List getList() {
         return list;
     }
@@ -107,12 +102,10 @@ public class Game implements PictureListener {
     }   
     
     private Boolean newFullBox() {
-        for(List<Box> boxes: list) {
-            for(Box box: boxes) {
-                if(box.isNewFull()) {
-                return true;
-                }
-            }
+        if (list.stream()
+                .anyMatch((boxes) -> (boxes.stream()
+                .anyMatch((box) -> (box.isNewFull()))))) {
+            return true;
         }
         return false;
     }    
@@ -123,13 +116,29 @@ public class Game implements PictureListener {
     
     @Override
     public void pictureEvent() {
+        if(gameFinished){                        
+             JOptionPane.showMessageDialog(null, String.format("Das Spiel ist beendet. {0}", evaluateWinner()),
+                     "Spiel beendet.", JOptionPane.QUESTION_MESSAGE);
+        }
+        
         if(!newFullBox()) {
             othersTurn();
         }
         else {
             player.increaseScore();
         }
-        for (GameListener hl : listeners)
-        hl.gameEvent();
+        listeners.stream().forEach((hl) -> {
+            hl.gameEvent();
+        });
+    }
+    
+    private String evaluateWinner(){
+        if(player.getScore() == enemy.getScore()){
+            return "Es ist Gleichstand!";
+        }
+        if(player.getScore() > enemy.getScore()){
+            return "Gratuliere! Du hast gewonnen!";
+        }
+        return "Du hast leider verloren. Viel Glück beim nächsten Mal!"; 
     }
 }
