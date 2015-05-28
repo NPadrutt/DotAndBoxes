@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout;
 import static javax.swing.GroupLayout.PREFERRED_SIZE;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -19,7 +20,7 @@ import javax.swing.WindowConstants;
  *
  * @author Nino
  */
-public class CreateGameDialog extends javax.swing.JDialog {
+public class CreateGameDialog extends JDialog {
     
     private final JButton buttonCreateGame;
     private final JLabel labelSpielerName;
@@ -48,7 +49,7 @@ public class CreateGameDialog extends javax.swing.JDialog {
         spinnerGameboardSizeVertical = new JSpinner(modelHorizontal);
         
         labelSpielerName.setText("Spielername");
-        labelGameboardSize.setText("Spielfeldgrösse(Horizontal / Vertikal)");
+        labelGameboardSize.setText("Spielfeldgrösse (Hor. / Ver.)");
 
         buttonCreateGame.setText("Los Gehts!");
         buttonCreateGame.setName("buttonStart");
