@@ -48,6 +48,7 @@ public class CreateGameDialog extends javax.swing.JDialog {
         spinnerGameboardSizeVertical = new JSpinner(modelHorizontal);
         
         labelSpielerName.setText("Spielername");
+        labelGameboardSize.setText("Spielfeldgrösse(Horizontal / Vertikal)");
 
         buttonCreateGame.setText("Los Gehts!");
         buttonCreateGame.setName("buttonStart");
@@ -55,9 +56,6 @@ public class CreateGameDialog extends javax.swing.JDialog {
             setVisible(false);    
             dispose();
         });
-
-        labelGameboardSize.setLabelFor(spinnerGameboardSizeVertical);
-        labelGameboardSize.setText("Spielfeldgrösse");
 
         javax.swing.GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,6 +71,7 @@ public class CreateGameDialog extends javax.swing.JDialog {
                             .addComponent(labelGameboardSize)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(spinnerGameboardSizeVertical)
+                                .addGap(7)
                                 .addComponent(spinnerGameboardSizeHorizontal)))
                         .addGap(18, 221, Short.MAX_VALUE)))
                 .addContainerGap())
