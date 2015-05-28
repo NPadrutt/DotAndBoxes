@@ -8,6 +8,7 @@ import dotandboxes.Models.ComputerPlayer;
 import dotandboxes.Models.GameListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import javax.swing.JOptionPane;
 
 /**
@@ -115,12 +116,7 @@ public class Game implements PictureListener {
     }    
     
     @Override
-    public void pictureEvent() {
-        if(gameFinished){                        
-             JOptionPane.showMessageDialog(null, "Das Spiel ist beendet. " + evaluateWinner(),
-                     "Spiel beendet.", JOptionPane.QUESTION_MESSAGE);
-        }
-        
+    public void pictureEvent() {       
         if(!newFullBox()) {
             othersTurn();
         }
@@ -130,15 +126,5 @@ public class Game implements PictureListener {
         listeners.stream().forEach((hl) -> {
             hl.gameEvent();
         });
-    }
-    
-    private String evaluateWinner(){
-        if(player.getScore() == enemy.getScore()){
-            return "Es ist Gleichstand!";
-        }
-        if(player.getScore() > enemy.getScore()){
-            return "Gratuliere! Du hast gewonnen!";
-        }
-        return "Du hast leider verloren. Viel Glück beim nächsten Mal!"; 
     }
 }

@@ -4,6 +4,7 @@ import dotandboxes.Game;
 import static java.util.Collections.list;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 
 
 public class ComputerPlayer extends Enemy implements GameListener {
@@ -67,19 +68,22 @@ public class ComputerPlayer extends Enemy implements GameListener {
                     marked = !marked;
                 }
             }
-            
-            CheckIfGameIsFinished();
-            
-        } while (!marked && !Game.gameFinished);
+
+        } while (!marked && !CheckIfGameIsFinished());
+        
         enemyEvent();
         Game.othersTurn();
     }
     
-    private void CheckIfGameIsFinished(){
-        list.stream().forEach((boxList) -> {
-            boxList.stream().forEach((box) -> {
-                Game.gameFinished = box.isBoxFull();
-            });
-        });
+    private Boolean CheckIfGameIsFinished(){
+        Predicate<Box> boxPredicate = e -> !e.isBoxFull();
+                
+        for(List<Box> boxList : list){
+            Boolean hasEmpty = boxList.stream().anyMatch(boxPredicate);
+            if(hasEmpty){
+                return false;
+            }            
+        }
+        return true;
     }
 }

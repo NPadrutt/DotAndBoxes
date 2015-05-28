@@ -18,8 +18,7 @@ import javax.swing.JPanel;
 public class Gameboard extends JPanel implements PictureListener, EnemyListener {
 
     private GridBagLayout grid;
-    GridBagConstraints gridBag;
-    
+    GridBagConstraints gridBag;    
     
     /**
      * Create a new Gameboard with the specified number of rows and columns.
