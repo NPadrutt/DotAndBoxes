@@ -34,7 +34,7 @@ public class DotAndBoxes extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
-        Game game = new Game(dialog.getGameboardSize(),dialog.getGameboardSize(),dialog.getPlayerName(),dialog.getGamemode());
+        Game game = new Game(dialog.getGameboardSizeVertical(),dialog.getGameboardSizeHorizontal(),dialog.getPlayerName(),dialog.getGamemode());
         Gameboard gameboard = new Gameboard(game.getList());
 
         this.add(gameboard, BorderLayout.CENTER);
