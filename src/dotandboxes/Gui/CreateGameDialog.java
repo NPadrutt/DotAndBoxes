@@ -31,7 +31,8 @@ public class CreateGameDialog extends javax.swing.JDialog {
     private final JRadioButton radiobuttonLocal;
     private final JRadioButton radiobuttonNetwork;
     private final ButtonGroup buttonGroup;
-    private final JSpinner spinnerGameboardSize;
+    private final JSpinner spinnerGameboardSizeVertical;
+    private final JSpinner spinnerGameboardSizeHorizontal;
     private final JTextField textFieldPlayerName;
     private final JTextField textFieldIpEnemy;
     
@@ -51,7 +52,8 @@ public class CreateGameDialog extends javax.swing.JDialog {
         textFieldIpEnemy = new JTextField();
         
         SpinnerModel model = new SpinnerNumberModel(3,3,30, 1);
-        spinnerGameboardSize = new JSpinner(model);
+        spinnerGameboardSizeVertical = new JSpinner(model);
+        spinnerGameboardSizeHorizontal = new JSpinner(model);
         labelGameMode = new JLabel();
         
         radiobuttonLocal = new JRadioButton();
@@ -69,10 +71,8 @@ public class CreateGameDialog extends javax.swing.JDialog {
             dispose();
         });
 
-        labelGameboardSize.setLabelFor(spinnerGameboardSize);
+        labelGameboardSize.setLabelFor(spinnerGameboardSizeVertical);
         labelGameboardSize.setText("Spielfeldgrösse");
-        
-        spinnerGameboardSize.setName("spinnerGameboardSize");
 
         labelGameMode.setLabelFor(radiobuttonLocal);
         labelGameMode.setText("Spielmodus");
@@ -109,7 +109,8 @@ public class CreateGameDialog extends javax.swing.JDialog {
                             .addComponent(labelSpielerName)
                             .addComponent(labelGameboardSize)
                             .addComponent(labelIpEnemy)
-                            .addComponent(spinnerGameboardSize, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spinnerGameboardSizeVertical, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spinnerGameboardSizeHorizontal, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelGameMode)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(radiobuttonLocal)
@@ -127,7 +128,8 @@ public class CreateGameDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelGameboardSize)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spinnerGameboardSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spinnerGameboardSizeVertical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spinnerGameboardSizeHorizontal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelGameMode)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -151,7 +153,7 @@ public class CreateGameDialog extends javax.swing.JDialog {
     }
     
     public int getGameboardSize(){
-        return (int)spinnerGameboardSize.getValue();
+        return (int)spinnerGameboardSizeVertical.getValue();
     } 
     
     public String getIpAdress(){

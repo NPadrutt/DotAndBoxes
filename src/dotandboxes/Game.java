@@ -78,8 +78,7 @@ public class Game implements PictureListener {
     
     public List getList() {
         return list;
-    }    
-    
+    }
     
     public static Player getPlayer() {
         return player;
@@ -104,8 +103,7 @@ public class Game implements PictureListener {
         else {
             currentPlayer = player;
         } 
-    }
-    
+    }   
     
     private Boolean newFullBox() {
         for(List<Box> boxes: list) {
@@ -116,13 +114,11 @@ public class Game implements PictureListener {
             }
         }
         return false;
-    }
-    
+    }    
     
     public static void addListener(GameListener toAdd) {
         listeners.add(toAdd);
-    }
-    
+    }    
     
     @Override
     public void pictureEvent() {
