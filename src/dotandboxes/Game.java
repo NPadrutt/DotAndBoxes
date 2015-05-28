@@ -117,7 +117,7 @@ public class Game implements PictureListener {
     @Override
     public void pictureEvent() {
         if(gameFinished){                        
-             JOptionPane.showMessageDialog(null, String.format("Das Spiel ist beendet. {0}", evaluateWinner()),
+             JOptionPane.showMessageDialog(null, "Das Spiel ist beendet. " + evaluateWinner(),
                      "Spiel beendet.", JOptionPane.QUESTION_MESSAGE);
         }
         
