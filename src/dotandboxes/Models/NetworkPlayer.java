@@ -1,6 +1,5 @@
 package dotandboxes.Models;
 
-import dotandboxes.Enemy;
 import dotandboxes.Game;
 
 public class NetworkPlayer extends Enemy implements GameListener {

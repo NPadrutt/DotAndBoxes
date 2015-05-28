@@ -1,7 +1,6 @@
 package dotandboxes;
 
-import dotandboxes.Gui.BoxPicture;
-import dotandboxes.Gui.DotPicture;
+import dotandboxes.Models.Enemy;
 import dotandboxes.Models.Box;
 import dotandboxes.Models.EnemyListener;
 import java.awt.Color;

@@ -1,5 +1,6 @@
 package dotandboxes;
 
+import dotandboxes.Models.Gamemode;
 import dotandboxes.Models.Box;
 import dotandboxes.Models.Player;
 import dotandboxes.Models.Line;
